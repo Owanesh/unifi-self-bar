@@ -1,8 +1,8 @@
 #Requirements (italian)
 Esiste un cliente, che siede ad un TAVOLO
-Un tavolo puÃ² essere visto come un INSIEME DI ORDINI
+Un tavolo può essere visto come un INSIEME DI ORDINI
 
-Un ordine Ã¨ ESCLUSIVAMENTE 1 (e una sola) Drink (con eventuali aggiunte)
+Un ordine è ESCLUSIVAMENTE 1 (e una sola) Drink (con eventuali aggiunte)
 
 Un tavolo ha un CONTO
 Il CONTO di un tavolo, descrive in dettaglio ogni singolo ordine
@@ -92,7 +92,6 @@ abstract\Supplement
 
 \abstract\Food\FingerFood
     - Olive
-
 
 
 
