@@ -1,6 +1,6 @@
 package it.unifi.selfbar.product;
 
-public abstract class Product {
+public abstract class Order {
 	protected double price;
 
 	public double getPrice() {

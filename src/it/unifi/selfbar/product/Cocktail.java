@@ -1,5 +1,5 @@
 package it.unifi.selfbar.product;
 
-public class Cocktail extends Product {
+public class Cocktail extends Order {
 
 }
