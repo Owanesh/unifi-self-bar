@@ -10,4 +10,5 @@ public class Soda extends CocktailDecorator {
 		price = Constants.SODA_VALUE;
 	}
 
+
 }

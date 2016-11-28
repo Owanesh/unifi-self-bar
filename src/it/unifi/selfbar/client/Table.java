@@ -18,4 +18,8 @@ public class Table {
 	public void requestOrder(Order order) {
 		bill.addOrder(order);
 	}
+
+	public Bill getBill() {
+		return bill;
+	}
 }

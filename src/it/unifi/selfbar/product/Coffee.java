@@ -1,5 +1,5 @@
 package it.unifi.selfbar.product;
 
-public class Coffee extends Order {
+public abstract class Coffee extends Order {
 
 }

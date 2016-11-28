@@ -9,5 +9,5 @@ public class Milk extends CoffeeDecorator {
 		super(coffee);
 		price = Constants.MILK_VALUE;
 	}
-
+	
 }

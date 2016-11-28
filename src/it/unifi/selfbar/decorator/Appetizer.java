@@ -10,4 +10,6 @@ public class Appetizer extends CocktailDecorator {
 		price = Constants.APPETIZER_VALUE;
 	}
 
+	
+
 }

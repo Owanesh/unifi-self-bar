@@ -10,4 +10,5 @@ public class Cream extends CoffeeDecorator {
 		price = Constants.CREAM_VALUE;
 	}
 
+	
 }
