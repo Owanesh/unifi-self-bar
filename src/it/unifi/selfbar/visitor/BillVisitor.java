@@ -3,6 +3,7 @@ package it.unifi.selfbar.visitor;
 import java.util.*;
 
 import it.unifi.selfbar.client.Bill;
+import it.unifi.selfbar.constant.Utility;
 import it.unifi.selfbar.product.Order;
 
 public class BillVisitor implements Visitor {
@@ -17,7 +18,7 @@ public class BillVisitor implements Visitor {
 			total += order.getTotalPrice();
 			System.out.println("--------------------------------------");
 		}
-		System.out.println("TOTAL PRICE: " + total);
+		System.out.println("TOTAL PRICE: " + Utility.roundTwoDecimalDigits(total));
 	}
 
 }

@@ -7,4 +7,10 @@ public class Utility {
 		}
 		return object;
 	}
+
+	public static double roundTwoDecimalDigits(double x) {
+		x = Math.ceil(x * 100);
+		x = x / 100;
+		return x;
+	}
 }
