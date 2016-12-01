@@ -1,13 +1,24 @@
 package it.unifi.selfbar.decorator;
 
-import it.unifi.selfbar.constant.Constants;
+import java.util.*;
+
 import it.unifi.selfbar.product.Coffee;
 
+/**
+ * @author Busiello & Mauro
+ */
 public class Milk extends CoffeeDecorator {
 
-	public Milk(Coffee coffee) {
+ 
+	public  Milk(Coffee coffee) {
 		super(coffee);
-		price = Constants.MILK_VALUE;
 	}
-	
+
+
+	@Override
+	public double getPrice() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -1,25 +1,26 @@
 package it.unifi.selfbar.decorator;
 
-import it.unifi.selfbar.constant.Utility;
+import java.util.*;
 import it.unifi.selfbar.product.*;
 
+/**
+ * @author Busiello & Mauro
+ */
 public abstract class CocktailDecorator extends Cocktail {
-	private Cocktail cocktail;
 
-	public CocktailDecorator(Cocktail cocktail) {
-		Utility.checkNull("Argument can't be null.", cocktail);
-		this.cocktail = cocktail;
+	private Order order;
+
+	public CocktailDecorator(Cocktail cocktail) throws IllegalArgumentException {
+		// TODplement here
 	}
-
+ 
+	public Order getOrder() {
+		return order;	
+	}	
+	
 	@Override
-	public double getTotalPrice() {
-		// cocktail price calculate recursively with getTotalPrice()
-		return cocktail.getTotalPrice() + this.price;
+	public double getPrice(){
+		return this.getPrice()+order.getPrice();
 	}
 
-	@Override
-	public String toString() {
-		return cocktail.toString() + "\n   SUPPLEMENT->" + getClass().getSimpleName() + " [price=" + getSimplePrice()
-				+ "]";
-	}
 }

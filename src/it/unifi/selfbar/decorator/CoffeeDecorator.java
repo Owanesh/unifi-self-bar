@@ -1,26 +1,29 @@
 package it.unifi.selfbar.decorator;
 
-import it.unifi.selfbar.constant.Utility;
-import it.unifi.selfbar.product.Coffee;
+import java.util.*;
 
+import it.unifi.selfbar.product.*;
+
+/**
+ * @author Busiello & Mauro
+ */
 public abstract class CoffeeDecorator extends Coffee {
-	private Coffee coffee;
 
-	public CoffeeDecorator(Coffee coffee) {
-		Utility.checkNull("Argument can't be null.", coffee);
-		this.coffee = coffee;
+
+	private Order order;
+
+
+	public  CoffeeDecorator(Coffee coffee) throws IllegalArgumentException {
+	}
+
+
+	public Order getOrder() {
+		return order;
 	}
 
 	@Override
-	public double getTotalPrice() {
-		// coffee price calculate recursively with getTotalPrice()
-		return coffee.getTotalPrice() + this.price;
-	}
-
-	@Override
-	public String toString() {
-		return coffee.toString() + "\n   SUPPLEMENT->" + getClass().getSimpleName() + " [price=" + getSimplePrice()
-				+ "]";
+	public double getPrice(){
+		return this.getPrice()+order.getPrice();
 	}
 
 }

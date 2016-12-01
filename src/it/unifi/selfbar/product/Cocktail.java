@@ -1,5 +1,17 @@
 package it.unifi.selfbar.product;
 
-public abstract class Cocktail extends Order {
+import java.util.*;
+
+/**
+ * @author Busiello & Mauro
+ */
+public abstract class Cocktail extends Product {
+
+	/**
+	 * Default constructor
+	 */
+	public Cocktail()  {
+	}
+
 
 }

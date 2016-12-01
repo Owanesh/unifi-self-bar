@@ -1,14 +1,17 @@
 package it.unifi.selfbar.decorator;
 
-import it.unifi.selfbar.constant.Constants;
+import java.util.*;
+
 import it.unifi.selfbar.product.Coffee;
 
+/**
+ * @author Busiello & Mauro
+ */
 public class Cream extends CoffeeDecorator {
 
+ 
 	public Cream(Coffee coffee) {
 		super(coffee);
-		price = Constants.CREAM_VALUE;
 	}
 
-	
 }

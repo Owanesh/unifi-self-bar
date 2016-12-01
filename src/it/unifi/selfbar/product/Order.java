@@ -1,29 +1,15 @@
 package it.unifi.selfbar.product;
 
-public abstract class Order {
-	protected double price;
+import java.util.*;
 
-	/**
-	 * Return the total price of this order, calculating it recursively if this
-	 * is a decorated order
-	 * 
-	 * @return total price of this order
-	 */
-	public abstract double getTotalPrice();
+import it.unifi.selfbar.exception.OrderNotDecoratedException;
 
-	/**
-	 * Return the price of this product, ignoring any other sub-order if this is
-	 * a decorated order
-	 * 
-	 * @return simple price of this order
-	 */
-	public final double getSimplePrice() {
-		return this.price;
-	}
+/**
+ * 
+ */
+public interface Order {
 
-	@Override
-	public String toString() {
-		return getClass().getSimpleName() + " [price=" + getSimplePrice() + "]";
-	}
+	public double getPrice();
 
+	public Order getOrder() throws OrderNotDecoratedException;
 }

@@ -21,4 +21,9 @@ public class Main {
 		table.getBill().accept(new BillVisitor());
 
 	}
+	
+ 
+	
 }
+
+
