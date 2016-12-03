@@ -1,7 +1,6 @@
 package it.unifi.selfbar.decorator;
 
-import java.util.*;
-
+import it.unifi.selfbar.constant.Constants;
 import it.unifi.selfbar.product.Coffee;
 
 /**
@@ -9,16 +8,9 @@ import it.unifi.selfbar.product.Coffee;
  */
 public class Milk extends CoffeeDecorator {
 
- 
-	public  Milk(Coffee coffee) {
+	public Milk(Coffee coffee) throws IllegalArgumentException {
 		super(coffee);
-	}
-
-
-	@Override
-	public double getPrice() {
-		// TODO Auto-generated method stub
-		return 0;
+		price = Constants.MILK_VALUE;
 	}
 
 }

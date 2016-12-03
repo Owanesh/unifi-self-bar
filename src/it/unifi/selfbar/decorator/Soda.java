@@ -1,7 +1,6 @@
 package it.unifi.selfbar.decorator;
 
-import java.util.*;
-
+import it.unifi.selfbar.constant.Constants;
 import it.unifi.selfbar.product.Cocktail;
 
 /**
@@ -9,8 +8,9 @@ import it.unifi.selfbar.product.Cocktail;
  */
 public class Soda extends CocktailDecorator {
 
-	public  Soda(Cocktail cocktail) {
-			super(cocktail);
+	public Soda(Cocktail cocktail) throws IllegalArgumentException {
+		super(cocktail);
+		price = Constants.SODA_VALUE;
 	}
 
 }

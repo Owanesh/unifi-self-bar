@@ -1,15 +1,18 @@
 package it.unifi.selfbar.product;
 
-import java.util.*;
-
-import it.unifi.selfbar.exception.OrderNotDecoratedException;
+import it.unifi.selfbar.exception.OrderNotDecorableException;
 
 /**
- * 
+ * @author Busiello & Mauro
  */
-public interface Order {
+public abstract class Order {
 
-	public double getPrice();
+	protected double price;
 
-	public Order getOrder() throws OrderNotDecoratedException;
+	public double getPrice() {
+		return price;
+	}
+
+	public abstract Order getOrder() throws OrderNotDecorableException;
+
 }

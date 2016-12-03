@@ -1,17 +1,16 @@
 package it.unifi.selfbar.decorator;
 
-import java.util.*;
-
-import it.unifi.selfbar.product.Product;
+import it.unifi.selfbar.constant.Constants;
+import it.unifi.selfbar.product.Order;
 
 /**
  * @author Busiello & Mauro
  */
-public class Ice extends ProductDecorator {
+public class Ice extends OrderDecorator {
 
-
-	public Ice(Product product) {
-		super(product);
+	public Ice(Order order) throws IllegalArgumentException {
+		super(order);
+		price = Constants.ICE_VALUE;
 	}
 
 }

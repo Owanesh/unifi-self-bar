@@ -5,14 +5,14 @@ import it.unifi.selfbar.product.*;
 /**
  * @author Busiello & Mauro
  */
-public abstract class CoffeeDecorator extends Coffee {
+public abstract class OrderDecorator extends Order {
 
 	private Order order;
 
-	public CoffeeDecorator(Coffee coffee) throws IllegalArgumentException {
-		if (coffee == null)
+	public OrderDecorator(Order order) throws IllegalArgumentException {
+		if (order == null)
 			throw new IllegalArgumentException("Argument must not be null.");
-		order = coffee;
+		this.order = order;
 	}
 
 	@Override

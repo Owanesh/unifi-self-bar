@@ -18,7 +18,7 @@ public class BillVisitor implements Visitor {
 			total += order.getPrice();
 			System.out.println("--------------------------------------");
 		}
-		System.out.println("TOTAL PRICE: " + Utility.roundTwoDecimalDigits(total));
+		System.out.println("TOTAL PRICE: " + Utility.round(total, 2));
 	}
 
 }
