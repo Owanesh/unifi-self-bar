@@ -14,11 +14,11 @@ public class BillVisitor implements Visitor {
 		double total = 0;
 		for (Order order : list) {
 			System.out.println(order.toString());
-			System.out.println("Total: " + order.getPrice());
+			System.out.println("Total: " + String.format("%.2f", order.getPrice()));
 			total += order.getPrice();
 			System.out.println("--------------------------------------");
 		}
-		System.out.println("TOTAL PRICE: " + Utility.round(total, 2));
+		System.out.println("TOTAL PRICE: " + String.format("%.2f", Utility.round(total, 2)));
 	}
 
 }
