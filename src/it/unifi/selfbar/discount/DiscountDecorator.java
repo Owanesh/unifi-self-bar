@@ -1,25 +1,21 @@
 package it.unifi.selfbar.discount;
 
-import java.util.*;
-
 /**
  * @author Busiello & Mauro
  */
-public abstract class DiscountDecorator implements Discount {
-
+public abstract class DiscountDecorator extends Discount {
 
 	private Discount discount;
 
-
-	public  DiscountDecorator(Discount discount) {}
-	public DiscountDecorator(){}
+	public DiscountDecorator(Discount discount) {
+		this.discount = discount;
+	}
 
 	public Discount getDiscount() {
 		return discount;
 	}
-
-
-	public abstract double doDiscuont(double total) ;
-
+	
+	@Override
+	public abstract double getPrice();
 
 }

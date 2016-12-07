@@ -5,29 +5,19 @@ import java.util.*;
 /**
  * @author Busiello & Mauro
  */
-public class NightDiscount extends DiscountDecorator implements Discount {
-
+public class NightDiscount extends DiscountDecorator {
 
 	private double percentage;
 
-
-	public  NightDiscount(double percentage) {
-		this.percentage=percentage;
-	}
-
-
-	public double doDiscuont(double total) {
-		return total-((total*percentage)/100);
-	}
-
-
-	public double getPercentage() {
-		return percentage;
-	}
-
-
-	public void setPercentage(double percentage) {
+	public NightDiscount(Discount discount, double percentage) {
+		super(discount);
 		this.percentage = percentage;
+	}
+
+	@Override
+	public double getPrice() {
+		double actual = getDiscount().getPrice();
+		return actual - (actual * percentage);
 	}
 
 }

@@ -1,13 +1,18 @@
 package it.unifi.selfbar.discount;
 
-import java.util.*;
-
 /**
  * @author Busiello & Mauro
  */
-public interface Discount {
+public abstract class Discount {
 
+	private double price;
 
-	public double doDiscuont(double total);
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
 
 }
