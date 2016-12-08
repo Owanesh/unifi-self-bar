@@ -1,7 +1,7 @@
-package it.unifi.selfbar.decorator;
+package it.unifi.selfbar.order.decorator;
 
 import it.unifi.selfbar.constant.Constants;
-import it.unifi.selfbar.product.Cocktail;
+import it.unifi.selfbar.order.Cocktail;
 
 /**
  * @author Busiello & Mauro

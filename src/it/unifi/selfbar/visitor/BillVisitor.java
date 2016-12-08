@@ -2,15 +2,15 @@ package it.unifi.selfbar.visitor;
 
 import java.util.*;
 
-import it.unifi.selfbar.client.Bill;
+import it.unifi.selfbar.client.SelfBarBill;
 import it.unifi.selfbar.constant.Utility;
-import it.unifi.selfbar.product.Order;
+import it.unifi.selfbar.order.Order;
 
 public class BillVisitor implements Visitor {
 
 	@Override
-	public void visitListOfOrders(Bill bill) {
-		List<Order> list = bill.getListOrders();
+	public void visitListOfOrders(SelfBarBill selfBarBill) {
+		List<Order> list = selfBarBill.getListOrders();
 		double total = 0;
 		for (Order order : list) {
 			System.out.println(order.toString());

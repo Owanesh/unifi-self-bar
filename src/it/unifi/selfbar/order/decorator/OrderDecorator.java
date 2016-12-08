@@ -1,6 +1,6 @@
-package it.unifi.selfbar.decorator;
+package it.unifi.selfbar.order.decorator;
 
-import it.unifi.selfbar.product.*;
+import it.unifi.selfbar.order.*;
 
 /**
  * @author Busiello & Mauro

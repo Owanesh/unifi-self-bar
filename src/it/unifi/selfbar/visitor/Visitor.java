@@ -1,7 +1,7 @@
 package it.unifi.selfbar.visitor;
 
-import it.unifi.selfbar.client.Bill;
+import it.unifi.selfbar.client.SelfBarBill;
 
 public interface Visitor {
-	public void visitListOfOrders(Bill bill);
+	public void visitListOfOrders(SelfBarBill selfBarBill);
 }

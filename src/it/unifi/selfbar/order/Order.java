@@ -1,4 +1,4 @@
-package it.unifi.selfbar.product;
+package it.unifi.selfbar.order;
 
 import it.unifi.selfbar.exception.OrderNotDecorableException;
 
@@ -10,6 +10,10 @@ public abstract class Order {
 	protected double price;
 
 	public double getPrice() {
+		return price;
+	}
+	
+	public double getSimplePrice() {
 		return price;
 	}
 

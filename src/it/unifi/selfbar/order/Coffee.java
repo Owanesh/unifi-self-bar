@@ -1,4 +1,4 @@
-package it.unifi.selfbar.product;
+package it.unifi.selfbar.order;
 
 /**
  * @author Busiello & Mauro

@@ -1,4 +1,4 @@
-package it.unifi.selfbar.product;
+package it.unifi.selfbar.order;
 
 import it.unifi.selfbar.constant.Constants;
 import it.unifi.selfbar.exception.OrderNotDecorableException;

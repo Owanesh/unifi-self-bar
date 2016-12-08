@@ -1,11 +1,13 @@
 package it.unifi.selfbar.main;
 
-import it.unifi.selfbar.product.*;
 import it.unifi.selfbar.visitor.BillVisitor;
 
 import it.unifi.selfbar.client.*;
-import it.unifi.selfbar.decorator.*;
-import it.unifi.selfbar.paymentStrategy.CreditCardPaymentStrategy;
+import it.unifi.selfbar.order.*;
+import it.unifi.selfbar.order.decorator.Cream;
+import it.unifi.selfbar.order.decorator.Ice;
+import it.unifi.selfbar.order.decorator.Soda;
+import it.unifi.selfbar.payment.CreditCardPaymentStrategy;
 
 public class Main {
 	public static void main(String[] args) {
@@ -17,7 +19,6 @@ public class Main {
 		Table t = new Table();
 		t.requestOrder(ice);
 		t.requestOrder(s);
-		t.getBill().accept(new BillVisitor());
 	}
 
 }

@@ -1,18 +1,18 @@
-package it.unifi.selfbar.decorator;
+package it.unifi.selfbar.order.decorator;
 
-import it.unifi.selfbar.product.*;
+import it.unifi.selfbar.order.*;
 
 /**
  * @author Busiello & Mauro
  */
-public abstract class CoffeeDecorator extends Coffee {
+public abstract class CocktailDecorator extends Cocktail {
 
 	private Order order;
 
-	public CoffeeDecorator(Coffee coffee) throws IllegalArgumentException {
-		if (coffee == null)
+	public CocktailDecorator(Cocktail cocktail) throws IllegalArgumentException {
+		if (cocktail == null)
 			throw new IllegalArgumentException("Argument must not be null.");
-		order = coffee;
+		order = cocktail;
 	}
 
 	@Override
