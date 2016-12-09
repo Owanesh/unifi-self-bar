@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import it.unifi.selfbar.bill.Bill;
+import it.unifi.selfbar.exception.OrderNotDecorableException;
 import it.unifi.selfbar.order.Order;
 
 public class BillLeastPopularOrderVisitor implements Visitor {
@@ -13,23 +14,38 @@ public class BillLeastPopularOrderVisitor implements Visitor {
 		List<Order> list = bill.getListOrders();
 		HashMap<Order, Integer> hashmap = createTableOfOccurence(list);
 		Order order = getLeastRequestedOrder(hashmap);
-		//System.out.println(order);
+		System.out.println(order);
 	}
 
 	private HashMap<Order, Integer> createTableOfOccurence(List<Order> list) {
 		HashMap<Order, Integer> hashmap = new HashMap<>();
 		for (Order order : list) {
-			if (hashmap.containsKey(order)) {
-				// conto un order in più
-				int occurence = hashmap.get(order) + 1;
-				hashmap.put(order, occurence);
-			} else {
-				// primo inserimento di quell'order
-				hashmap.put(order, 1);
-			}
+			Order insideProduct = getLastOrder(order);
+			insertProduct(hashmap, insideProduct);
 		}
-		System.out.println(hashmap);
 		return hashmap;
+	}
+
+	private Order getLastOrder(Order order) {
+		Order rst = order;
+		try {
+			while (rst.getOrder() != null) {
+				rst = rst.getOrder();
+			}
+		} catch (OrderNotDecorableException e) {
+		}
+		return rst;
+	}
+
+	private void insertProduct(HashMap<Order, Integer> hashmap, Order insideProduct) {
+		if (hashmap.containsKey(insideProduct)) {
+			// conto un order in più
+			int occurence = hashmap.get(insideProduct) + 1;
+			hashmap.put(insideProduct, occurence);
+		} else {
+			// primo inserimento di quell'order
+			hashmap.put(insideProduct, 1);
+		}
 	}
 
 	private Order getLeastRequestedOrder(HashMap<Order, Integer> hashmap) {

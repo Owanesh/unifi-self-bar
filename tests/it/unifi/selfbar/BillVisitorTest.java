@@ -18,24 +18,22 @@ public class BillVisitorTest {
 	@Before
 	public void init() {
 		b = new SelfBarBill();
+		// 3 Martini - 1 Brasilian
 		b.addOrder(new Martini());
 		b.addOrder(new Soda(new Martini()));
 		b.addOrder(new Soda(new Martini()));
-
-		// 1 Martini
-		// 2 Martini+Soda
+		b.addOrder(new Brasilian());
 
 	}
 
 	@Test
 	public void visitPrintTest() {
-		//b.accept(new BillPrintVisitor());
+		b.accept(new BillPrintVisitor());
 	}
 
 	@Test
 	public void visitLeastPopularOrderTest() {
 		b.accept(new BillLeastPopularOrderVisitor());
-
 	}
 
 }
