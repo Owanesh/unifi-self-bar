@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.unifi.selfbar.order.Order;
+import it.unifi.selfbar.visitor.Visitor;
 
 /**
  * @author Busiello & Mauro
@@ -38,4 +39,7 @@ public abstract class Bill {
 	}
 
 	public abstract Bill getDiscount() throws Exception;
+	public void accept(Visitor v){
+		v.visitBill(this);
+	}
 }

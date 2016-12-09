@@ -10,7 +10,12 @@ public class Cream extends CoffeeDecorator {
 
 	public Cream(Coffee coffee) throws IllegalArgumentException {
 		super(coffee);
-		price = Constants.CREAM_VALUE;
+		setPrice(Constants.CREAM_VALUE);
+	}
+
+	@Override
+	protected boolean checkSameType(Object obj) {
+		return obj instanceof Cream;
 	}
 
 }

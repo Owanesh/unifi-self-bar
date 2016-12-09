@@ -10,7 +10,11 @@ public class Ice extends OrderDecorator {
 
 	public Ice(Order order) throws IllegalArgumentException {
 		super(order);
-		price = Constants.ICE_VALUE;
+		setPrice(Constants.ICE_VALUE);
 	}
 
+	@Override
+	protected boolean checkSameType(Object obj) {
+		return obj instanceof Ice;
+	}
 }

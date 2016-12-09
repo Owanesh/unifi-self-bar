@@ -10,7 +10,12 @@ public class Appetizer extends CocktailDecorator {
 
 	public Appetizer(Cocktail cocktail) throws IllegalArgumentException {
 		super(cocktail);
-		price = Constants.APPETIZER_VALUE;
+		setPrice(Constants.APPETIZER_VALUE);
+	}
+
+	@Override
+	protected boolean checkSameType(Object obj) {
+		return obj instanceof Appetizer;
 	}
 
 }

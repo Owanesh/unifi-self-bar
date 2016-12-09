@@ -10,7 +10,11 @@ public class Soda extends CocktailDecorator {
 
 	public Soda(Cocktail cocktail) throws IllegalArgumentException {
 		super(cocktail);
-		price = Constants.SODA_VALUE;
+		setPrice(Constants.SODA_VALUE);
 	}
 
+	@Override
+	protected boolean checkSameType(Object obj) {
+		return obj instanceof Soda;
+	}
 }

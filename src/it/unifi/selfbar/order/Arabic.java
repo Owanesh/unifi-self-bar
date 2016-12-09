@@ -9,12 +9,17 @@ import it.unifi.selfbar.exception.OrderNotDecorableException;
 public class Arabic extends Coffee {
 
 	public Arabic() {
-		price = Constants.ARABIC_VALUE;
+		setPrice(Constants.ARABIC_VALUE);
 	}
 
 	@Override
 	public Order getOrder() throws OrderNotDecorableException {
 		throw new OrderNotDecorableException("This order is not a decorator.");
+	}
+
+	@Override
+	protected boolean checkSameType(Object obj) {
+		return obj instanceof Arabic;
 	}
 
 }

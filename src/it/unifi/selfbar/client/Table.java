@@ -20,7 +20,7 @@ public class Table {
 		strategy.pay(bill.getTotal());
 	}
 
-	public void requestOrder(Order order) {
+	public void addOrder(Order order) {
 		bill.addOrder(order);
 	}
 

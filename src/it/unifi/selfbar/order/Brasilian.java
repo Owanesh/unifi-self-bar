@@ -2,14 +2,12 @@ package it.unifi.selfbar.order;
 
 import it.unifi.selfbar.constant.Constants;
 import it.unifi.selfbar.exception.OrderNotDecorableException;
+import it.unifi.selfbar.order.decorator.OrderDecorator;
 
-/**
- * @author Busiello & Mauro
- */
-public class Martini extends Cocktail {
+public class Brasilian extends Coffee {
 
-	public Martini() {
-		setPrice(Constants.MARTINI_VALUE);
+	public Brasilian() {
+		setPrice(Constants.BRASILIAN_VALUE);
 	}
 
 	@Override
@@ -19,6 +17,7 @@ public class Martini extends Cocktail {
 
 	@Override
 	protected boolean checkSameType(Object obj) {
-		return obj instanceof Martini;
+		return obj instanceof Brasilian;
 	}
+
 }

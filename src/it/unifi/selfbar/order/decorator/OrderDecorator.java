@@ -16,6 +16,22 @@ public abstract class OrderDecorator extends Order {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		// verifico che siano esattamente lo stesso prodotto
+		// delego ad ogni sottoclasse tale compito
+		if (!checkSameType(obj)) {
+			return false;
+		}
+		OrderDecorator other = (OrderDecorator) obj;
+		return order.equals(other.getOrder());
+
+	}
+
+	@Override
 	public Order getOrder() {
 		return order;
 	}

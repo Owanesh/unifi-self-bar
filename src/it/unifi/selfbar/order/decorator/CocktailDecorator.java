@@ -16,6 +16,22 @@ public abstract class CocktailDecorator extends Cocktail {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		// verifico che siano esattamente lo stesso prodotto
+		// delego ad ogni sottoclasse tale compito
+		if (!checkSameType(obj)) {
+			return false;
+		}
+		CocktailDecorator other = (CocktailDecorator) obj;
+		return order.equals(other.getOrder());
+
+	}
+
+	@Override
 	public Order getOrder() {
 		return order;
 	}
