@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import it.unifi.selfbar.bill.Bill;
 import it.unifi.selfbar.bill.NightDiscount;
-import it.unifi.selfbar.client.SelfBarBill;
+import it.unifi.selfbar.bill.SelfBarBill;
 import it.unifi.selfbar.order.Martini;
 import it.unifi.selfbar.order.decorator.Soda;
 import it.unifi.selfbar.payment.CashPaymentStrategy;

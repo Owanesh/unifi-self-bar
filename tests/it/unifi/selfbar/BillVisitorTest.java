@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import it.unifi.selfbar.bill.Bill;
-import it.unifi.selfbar.client.SelfBarBill;
+import it.unifi.selfbar.bill.SelfBarBill;
 import it.unifi.selfbar.order.*;
 import it.unifi.selfbar.order.decorator.*;
 import it.unifi.selfbar.visitor.BillLeastPopularOrderVisitor;

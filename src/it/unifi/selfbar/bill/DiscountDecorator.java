@@ -15,12 +15,15 @@ public abstract class DiscountDecorator extends Bill {
 		this.bill = bill;
 	}
 
-	public abstract double getTotal() ;
+	@Override
+	public abstract double getTotal();
 
+	@Override
 	public void addOrder(Order order) {
 		bill.addOrder(order);
 	}
 
+	@Override
 	public List<Order> getListOrders() {
 		return bill.getListOrders();
 	}

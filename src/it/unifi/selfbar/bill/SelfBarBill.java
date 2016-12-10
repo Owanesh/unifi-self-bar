@@ -1,6 +1,4 @@
-package it.unifi.selfbar.client;
-
-import it.unifi.selfbar.bill.Bill;
+package it.unifi.selfbar.bill;
 
 /**
  * @author Busiello & Mauro

@@ -1,23 +1,32 @@
 package it.unifi.selfbar.client;
 
 import it.unifi.selfbar.bill.Bill;
-import it.unifi.selfbar.bill.NightDiscount;
 import it.unifi.selfbar.order.*;
 import it.unifi.selfbar.payment.PaymentStrategy;
 
 /**
  * @author Busiello & Mauro
  */
-public class Table {
+public abstract class Table {
 
 	private Bill bill;
 
 	public Table() {
-		bill = new SelfBarBill();
+		reset();
 	}
 
-	public void requestPayment(PaymentStrategy strategy, Bill bill) {
+	/**
+	 * factory method
+	 * 
+	 * @return the specific Bill for the concrete class that implements this
+	 *         method
+	 */
+	protected abstract Bill createBill();
+
+	public void requestPayment(PaymentStrategy strategy) {
 		strategy.pay(bill.getTotal());
+		// il conto è pagato, ripristino il tavolo per il prossimo cliente
+		reset();
 	}
 
 	public void addOrder(Order order) {
@@ -26,6 +35,14 @@ public class Table {
 
 	public Bill getBill() {
 		return bill;
+	}
+
+	public void setBill(Bill bill) {
+		this.bill = bill;
+	}
+
+	public void reset() {
+		bill = createBill();
 	}
 
 }

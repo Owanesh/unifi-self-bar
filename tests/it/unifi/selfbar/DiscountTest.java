@@ -8,9 +8,12 @@ import org.junit.Test;
 import it.unifi.selfbar.bill.AbsoluteDiscount;
 import it.unifi.selfbar.bill.Bill;
 import it.unifi.selfbar.bill.NightDiscount;
-import it.unifi.selfbar.client.SelfBarBill;
+import it.unifi.selfbar.bill.SelfBarBill;
 import it.unifi.selfbar.order.Arabic;
+import it.unifi.selfbar.order.Martini;
+import it.unifi.selfbar.order.decorator.Appetizer;
 import it.unifi.selfbar.order.decorator.Milk;
+import it.unifi.selfbar.order.decorator.Soda;
 
 public class DiscountTest {
 
@@ -47,6 +50,15 @@ public class DiscountTest {
 		double expected = ARABIC_VALUE + MILK_VALUE * 2;
 		expected -= expected * percentage;
 		assertTrue(bill.getTotal() >= 0);
+	}
+
+	@Test
+	public void sizeListOfOrderTest() {
+		bill = new AbsoluteDiscount(new NightDiscount(new SelfBarBill(), percentage), percentage);
+		bill.addOrder(new Milk(new Milk(new Arabic())));
+		bill.addOrder(new Soda(new Appetizer(new Martini())));
+		int expected = 2;
+		assertEquals(expected, bill.getListOrders().size());
 	}
 
 }
