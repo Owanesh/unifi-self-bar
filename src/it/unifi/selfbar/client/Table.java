@@ -33,6 +33,10 @@ public abstract class Table {
 		bill.addOrder(order);
 	}
 
+	public boolean removeOrder(Order order) {
+		return bill.removeOrder(order);
+	}
+
 	public Bill getBill() {
 		return bill;
 	}

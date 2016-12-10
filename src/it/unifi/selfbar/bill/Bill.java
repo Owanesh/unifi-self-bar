@@ -39,8 +39,12 @@ public abstract class Bill {
 	}
 
 	public abstract Bill getDiscount() throws Exception;
-	
-	public void accept(Visitor v){
+
+	public void accept(Visitor v) {
 		v.visitBill(this);
+	}
+
+	public boolean removeOrder(Order order) {
+		return listOrders.remove(order);
 	}
 }
