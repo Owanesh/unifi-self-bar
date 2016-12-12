@@ -10,4 +10,6 @@ public class Constants {
 	public static final double ICE_VALUE = 0;
 	public static final int NUMBER_OF_TABLES = 10;
 	public static final double BRASILIAN_VALUE = 1.00;
+	
+	public static final String APPLICATION_NAME = "SelfBar";
 }
