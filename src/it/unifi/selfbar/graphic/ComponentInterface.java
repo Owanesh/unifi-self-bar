@@ -4,4 +4,5 @@ public interface ComponentInterface {
 
 	public void refresh();
  
+	public void reset();
 }

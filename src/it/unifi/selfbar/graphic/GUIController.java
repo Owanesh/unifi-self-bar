@@ -5,23 +5,39 @@ import javax.swing.*;
 
 import it.unifi.selfbar.constant.Constants;
 import it.unifi.selfbar.constant.GraphicGuide;
+import it.unifi.selfbar.constant.ViewSets;
+import it.unifi.selfbar.graphic.view.WelcomeView;
 
 import java.awt.*;
+import java.util.HashMap;
 
-public class Controller extends JFrame implements ComponentInterface{
+public class GUIController extends JFrame implements ComponentInterface{
 
+	/* Fields */
 	JPanel oldPnl;
 	JPanel currentPnl;
-
-	public Controller(Dimension dmn) {
+	private HashMap viewList;
+	
+	private static GUIController instance = null;
+	
+	/* Singleton */
+ 	public static  GUIController getInstance() {
+	      if(instance == null) {
+	         instance = new GUIController();
+	      }
+	      return instance;
+	   }
+	
+	protected GUIController() {
 		super();
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setPreferredSize(dmn);
+		this.setPreferredSize(new Dimension(GraphicGuide.WINDOW_WIDTH, GraphicGuide.WINDOW_HEIGHT));
 		configureBasicLayout();
+		this.add(new WelcomeView());
 		refresh();
 		this.setVisible(true);
-	}
-
+	} 
+	
 	public void setCurrentPanel(JPanel newPnl) {
 		this.oldPnl = this.currentPnl;
 		this.currentPnl = newPnl;
@@ -49,8 +65,8 @@ public class Controller extends JFrame implements ComponentInterface{
 		this.validate();
 	}
 
-	public void configureBasicLayout() {
-		getContentPane().setBackground(Color.darkGray);
+	private void configureBasicLayout() {
+		getContentPane().setBackground(GraphicGuide.BACKGROUND_TONE);
 		this.setTitle(Constants.APPLICATION_NAME);
 		this.setLocationRelativeTo(this);
 		try {
@@ -60,6 +76,16 @@ public class Controller extends JFrame implements ComponentInterface{
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void defineViewSet(){
+		this.viewList = ViewSets.map();
 	}
 	
  

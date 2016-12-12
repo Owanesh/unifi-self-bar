@@ -8,8 +8,8 @@ import java.awt.Toolkit;
  
 public class Main {
 	public static void main(String[] args) {
-		GUIController c = new GUIController(new Dimension(800, 600));
- 	}
-
+		GUIController gui =  GUIController.getInstance();
+	}
+ 
  
 }
