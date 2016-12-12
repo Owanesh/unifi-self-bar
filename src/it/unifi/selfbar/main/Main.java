@@ -4,12 +4,11 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 
- 
-import it.unifi.selfbar.graphic.Controller;
+ import it.unifi.selfbar.graphic.GUIController;
 
 public class Main {
 	public static void main(String[] args) {
-		Controller c = new Controller(new Dimension(800, 600));
+		GUIController gui =  GUIController.getInstance();
 	}
 
  

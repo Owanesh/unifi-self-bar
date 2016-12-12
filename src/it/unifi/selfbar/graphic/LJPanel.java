@@ -8,13 +8,16 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import it.unifi.selfbar.constant.GraphicGuide;
+
 public abstract class LJPanel extends JPanel implements ComponentInterface {
-	private GridBagConstraints gridBagContraints;
+	protected GridBagConstraints gridBagContraints;
 	
 	public LJPanel() {
 		super(new GridBagLayout());
+		setBackground(GraphicGuide.BACKGROUND_TONE);
 		gridBagContraints = new GridBagConstraints();
-		}
+	}
 
 	public void add(JLabel lbl, Color color, int size){
 		prepareLabel( lbl, color, size);
@@ -32,4 +35,5 @@ public abstract class LJPanel extends JPanel implements ComponentInterface {
 		this.validate();
 	}
 	
+	protected abstract void goTo();
 }
