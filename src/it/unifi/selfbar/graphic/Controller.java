@@ -1,13 +1,14 @@
 package it.unifi.selfbar.graphic;
 
 import javax.swing.*;
+ 
 
 import it.unifi.selfbar.constant.Constants;
 import it.unifi.selfbar.constant.GraphicGuide;
 
 import java.awt.*;
 
-public class Controller extends JFrame {
+public class Controller extends JFrame implements ComponentInterface{
 
 	JPanel oldPnl;
 	JPanel currentPnl;
@@ -60,4 +61,6 @@ public class Controller extends JFrame {
 		}
 
 	}
+	
+ 
 }
