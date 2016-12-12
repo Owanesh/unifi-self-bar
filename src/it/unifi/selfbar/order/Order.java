@@ -1,7 +1,6 @@
 package it.unifi.selfbar.order;
 
 import it.unifi.selfbar.exception.OrderNotDecorableException;
-import it.unifi.selfbar.visitor.Visitor;
 
 /**
  * @author Busiello & Mauro
