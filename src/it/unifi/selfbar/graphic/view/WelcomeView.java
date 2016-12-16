@@ -24,11 +24,12 @@ public class WelcomeView extends LJPanel{
 
 	@Override
 	protected void goTo() {
+		//Go to another page after 5 Second
 		Timer t = new Timer(5000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
             	GUIController mainGui = GUIController.getInstance();
-        		mainGui.setCurrentPanel(new ProductListView());
+        		mainGui.switchTo(GraphicGuide.SELECT_PRODUCT_VIEW);
         		}
         });
         t.setRepeats(false);
