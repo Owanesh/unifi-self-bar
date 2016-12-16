@@ -1,6 +1,7 @@
 package it.unifi.selfbar.order;
 
 import it.unifi.selfbar.constant.Constants;
+import it.unifi.selfbar.exception.ErrorMessages;
 import it.unifi.selfbar.exception.OrderNotDecorableException;
 
 /**
@@ -15,8 +16,13 @@ public class Martini implements Cocktail {
 	
 
 	@Override
+<<<<<<< HEAD
 	public double getPrice() {
 		return getSimplePrice();
+=======
+	public Order getOrder() throws OrderNotDecorableException {
+		throw new OrderNotDecorableException(ErrorMessages.THIS_ORDER_IS_NOT_DECORATOR);
+>>>>>>> Reduced Hardcode
 	}
 
 	@Override

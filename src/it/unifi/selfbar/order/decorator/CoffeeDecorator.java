@@ -15,10 +15,17 @@ public abstract class CoffeeDecorator extends Coffee {
 
 	private Order order;
 
+<<<<<<< HEAD:src/it/unifi/selfbar/order/decorator/CoffeeDecorator.java
 	public CoffeeDecorator(Coffee coffee) throws IllegalArgumentException {
 		if (coffee == null)
 			throw new IllegalArgumentException(ErrorMessages.ARGUMENT_MUST_NOT_BE_NULL);
 		order = coffee;
+=======
+	public OrderDecorator(Order order) throws IllegalArgumentException {
+		if (order == null)
+			throw new IllegalArgumentException(ErrorMessages.ARGUMENT_MUST_NOT_BE_NULL);
+		this.order = order;
+>>>>>>> Reduced Hardcode:src/it/unifi/selfbar/order/decorator/OrderDecorator.java
 	}
 
 	@Override

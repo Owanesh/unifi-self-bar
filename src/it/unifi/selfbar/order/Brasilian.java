@@ -1,6 +1,7 @@
 package it.unifi.selfbar.order;
 
 import it.unifi.selfbar.constant.Constants;
+import it.unifi.selfbar.exception.ErrorMessages;
 import it.unifi.selfbar.exception.OrderNotDecorableException;
 
 public class Brasilian implements Coffee {
@@ -17,8 +18,13 @@ public class Brasilian implements Coffee {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public double getSimplePrice() {
 		return Constants.BRASILIAN_VALUE;
+=======
+	public Order getOrder() throws OrderNotDecorableException {
+		throw new OrderNotDecorableException(ErrorMessages.THIS_ORDER_IS_NOT_DECORATOR);
+>>>>>>> Reduced Hardcode
 	}
 
 	@Override
