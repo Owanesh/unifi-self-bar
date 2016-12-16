@@ -8,26 +8,29 @@ import it.unifi.selfbar.graphic.view.*;
  
 public class ViewSets {
 
-	private static  HashMap<String, LJPanel> map;
+	private static  HashMap<String, LJPanel> view;
 		
-	private static HashMap<String, LJPanel> initializeMap(){
-		map = new HashMap<>();
-		map.put("welcome", new WelcomeView());
-		map.put("selectproduct", new ProductListView());
-		map.put("selectsupplement", new WelcomeView());
-		map.put("precheckout", new WelcomeView());
-		map.put("checkbill", new WelcomeView());
-		map.put("paymentmethod", new WelcomeView());
-		map.put("goodbye", new WelcomeView());
-		return map;
+	private static HashMap<String, LJPanel> initializeViews(){
+		view = new HashMap<>();
+		view.put("welcome", new WelcomeView());
+		view.put("selectproduct", new ProductListView());
+		view.put("selectsupplement", new WelcomeView());
+		view.put("precheckout", new WelcomeView());
+		view.put("checkbill", new WelcomeView());
+		view.put("paymentmethod", new WelcomeView());
+		view.put("goodbye", new WelcomeView());
+		return view;
 	}
 	
-	public static  HashMap map(){
-	 if(map == null) {
-		 map = initializeMap();
+	
+	
+	public static  HashMap getView(){
+	 if(view == null) {
+		 view = initializeViews();
 	 }
-	 return map;
+	 return view;
 	}
+	
 
-
+ 
 }
