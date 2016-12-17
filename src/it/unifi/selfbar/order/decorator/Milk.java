@@ -7,14 +7,18 @@ import it.unifi.selfbar.order.Coffee;
  * @author Busiello & Mauro
  */
 public class Milk extends CoffeeDecorator {
-
-	public Milk(Coffee coffee) throws IllegalArgumentException {
-		super(coffee);
-		setPrice(Constants.MILK_VALUE);
-	}
-
+	
+	public Milk(Coffee milk) throws IllegalArgumentException {
+		super(milk);
+ 	}
+	
 	@Override
-	protected boolean checkSameType(Object obj) {
-		return obj instanceof Milk;
+	public double getPrice(){
+		return super.getPrice()+getSimplePrice();
+	}
+	
+	@Override
+	public double getSimplePrice(){
+		return Constants.MILK_VALUE;
 	}
 }
