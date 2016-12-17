@@ -20,4 +20,15 @@ public static final String WELCOME_VIEW="Welcome";
 public static final String SELECT_PRODUCT_VIEW="Select Product";
 public static final String SELECT_SUPPLEMENT_VIEW="Select Supplement";
 
+
+/* Labels */
+public static final int LABEL_FONTSIZE=20;
+public static final String TOTAL_LABEL="Total";
+public static final String SUBTOTAL_LABEL="Subtotal";
+public static final String DISCOUNT_LABEL="Discount";
+public static final String OUR_PRODUCTS_LABEL="Our Products";
+public static final String YOUR_CHOICE="Your choice";
+
+
+
 }
