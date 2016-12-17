@@ -31,7 +31,6 @@ public class OrderTest {
 		} catch (OrderNotDecorableException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@Test
@@ -41,45 +40,11 @@ public class OrderTest {
 		m.getOrder();
 	}
 
-	@Test
-	public void nullArgumentExceptionTest() throws IllegalArgumentException {
-		exception.expect(IllegalArgumentException.class);
-		Soda m = new Soda(null);
-	}
+ 
 
-	@Test
-	public void equalsSimpleTest() {
-		Order arabic = new Arabic();
-		Order brasilian = new Brasilian();
-		assertFalse(arabic.equals(brasilian));
+ 
 
-		Order arabic1 = new Arabic();
-		assertTrue(arabic.equals(arabic1));
-	}
-
-	@Test
-	public void equalsDifferentDecorationTest() {
-		Order martini = new Appetizer(new Martini());
-		Order martini2 = new Soda(new Martini());
-		assertFalse(martini.equals(martini2));
-	}
-
-	@Test
-	public void equalsSameDecorationTest() {
-		Order martini = new Soda(new Martini());
-		Order martini2 = new Soda(new Martini());
-		assertTrue(martini.equals(martini2));
-	}
-
-	@Test
-	public void equalsCombinationDecorationTest() {
-		Order martini = new Appetizer(new Soda(new Martini()));
-		Order martini2 = new Soda(new Appetizer(new Martini()));
-		assertFalse(martini.equals(martini2));
-		
-		Order arabic = new Cream(new Arabic());
-		Order brasilian = new Cream(new Brasilian());
-		assertFalse(arabic.equals(brasilian));
-	}
+	 
+ 
 
 }

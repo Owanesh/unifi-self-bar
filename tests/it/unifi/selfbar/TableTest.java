@@ -17,6 +17,7 @@ public class TableTest {
 		table = new SelfBarTable();
 	}
 
+	
 	@Test
 	public void addOrderTest() {
 		table.addOrder(new Martini());
@@ -25,12 +26,7 @@ public class TableTest {
 		assertEquals(expected, table.getBill().getListOrders().size());
 	}
 
-	@Test
-	public void removeOrderWithEqualsTest() {
-		table.addOrder(new Martini());
-		assertTrue(table.removeOrder(new Martini()));
-		assertFalse(table.removeOrder(new Martini()));// già rimosso
-	}
+ 
 
 	@Test
 	public void removeOrderWithReferenceTest() {

@@ -22,9 +22,13 @@ public abstract class Bill {
 		return total;
 	}
 
-	public void addOrder(Order order) {
-		this.listOrders.add(order);
-		updateTotal();
+	public void addOrder(Order order) throws IllegalArgumentException {
+		if (order == null) {
+			throw new IllegalArgumentException("NullOrder: You cannot add a NULL Order");
+		} else {
+			this.listOrders.add(order);
+			updateTotal();
+		}
 	}
 
 	public List<Order> getListOrders() {

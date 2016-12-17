@@ -1,6 +1,7 @@
 package it.unifi.selfbar.order.decorator;
 
 import it.unifi.selfbar.constant.Constants;
+import it.unifi.selfbar.order.Cocktail;
 import it.unifi.selfbar.order.Coffee;
 
 /**
@@ -10,12 +11,17 @@ public class Cream extends CoffeeDecorator {
 
 	public Cream(Coffee coffee) throws IllegalArgumentException {
 		super(coffee);
-		setPrice(Constants.CREAM_VALUE);
+ 	}
+	
+	@Override
+	public double getPrice(){
+		return super.getPrice()+getSimplePrice();
+	}
+	
+	@Override
+	public double getSimplePrice(){
+		return Constants.CREAM_VALUE;
 	}
 
-	@Override
-	protected boolean checkSameType(Object obj) {
-		return obj instanceof Cream;
-	}
 
 }
