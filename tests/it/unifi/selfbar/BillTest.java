@@ -3,7 +3,9 @@ package it.unifi.selfbar;
 import static org.junit.Assert.*;
 import static it.unifi.selfbar.constant.Constants.*;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import it.unifi.selfbar.bill.Bill;
 import it.unifi.selfbar.bill.SelfBarBill;
@@ -13,12 +15,26 @@ import it.unifi.selfbar.order.decorator.Soda;
 
 public class BillTest {
 	Bill bill;
-
+	
+	@Rule
+	public final ExpectedException iAExcept = ExpectedException.none();
+	
 	@Before
 	public void init() {
 		bill = new SelfBarBill();
 	}
 
+	@Test
+	public void getNoneOrderTotal(){
+		assertTrue(bill.getTotal()==0);
+	}
+	
+	@Test
+	public void getNullOrder() throws IllegalArgumentException{
+		iAExcept.expect(IllegalArgumentException.class);
+		bill.addOrder(null);
+ 	}
+		
 	@Test
 	public void getTotalTest() {
 		bill.addOrder(new Milk(new Milk(new Arabic())));
