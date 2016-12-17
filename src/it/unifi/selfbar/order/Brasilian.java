@@ -3,20 +3,28 @@ package it.unifi.selfbar.order;
 import it.unifi.selfbar.constant.Constants;
 import it.unifi.selfbar.exception.OrderNotDecorableException;
 
-public class Brasilian extends Coffee {
+public class Brasilian implements Coffee {
 
-	public Brasilian() {
-		setPrice(Constants.BRASILIAN_VALUE);
+	@Override
+	public String toString(){
+		return this.getClass().getSimpleName()+" : "+getSimplePrice();
+	}
+	
+ 
+	@Override
+	public double getPrice() {
+		return getSimplePrice();
+	}
+
+	@Override
+	public double getSimplePrice() {
+		return Constants.BRASILIAN_VALUE;
 	}
 
 	@Override
 	public Order getOrder() throws OrderNotDecorableException {
-		throw new OrderNotDecorableException("This order is not a decorator.");
+		throw new OrderNotDecorableException("Order non decorable exception");
 	}
 
-	@Override
-	protected boolean checkSameType(Object obj) {
-		return obj instanceof Brasilian;
-	}
 
 }

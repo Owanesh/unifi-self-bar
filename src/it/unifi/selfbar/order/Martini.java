@@ -6,19 +6,27 @@ import it.unifi.selfbar.exception.OrderNotDecorableException;
 /**
  * @author Busiello & Mauro
  */
-public class Martini extends Cocktail {
+public class Martini implements Cocktail {
 
-	public Martini() {
-		setPrice(Constants.MARTINI_VALUE);
+	@Override
+	public String toString(){
+		return this.getClass().getSimpleName()+" : "+getSimplePrice();
+	}
+	
+
+	@Override
+	public double getPrice() {
+		return getSimplePrice();
+	}
+
+	@Override
+	public double getSimplePrice() {
+		return Constants.MARTINI_VALUE;
 	}
 
 	@Override
 	public Order getOrder() throws OrderNotDecorableException {
-		throw new OrderNotDecorableException("This order is not a decorator.");
+		throw new OrderNotDecorableException("Order non decorable exception");
 	}
 
-	@Override
-	protected boolean checkSameType(Object obj) {
-		return obj instanceof Martini;
-	}
 }

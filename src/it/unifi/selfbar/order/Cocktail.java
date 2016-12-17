@@ -3,6 +3,6 @@ package it.unifi.selfbar.order;
 /**
  * @author Busiello & Mauro
  */
-public abstract class Cocktail extends Order {
+public interface  Cocktail extends Order {
 
 }
