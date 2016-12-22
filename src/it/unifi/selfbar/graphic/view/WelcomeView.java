@@ -16,7 +16,7 @@ public class WelcomeView extends LJPanel{
 	private JLabel welcomeMessage = new JLabel(GraphicGuide.WELCOME_MESSAGE);
 	
 	public WelcomeView() {
-		this.add(welcomeMessage, GraphicGuide.RED_TONE, 40);
+		this.add(welcomeMessage, GraphicGuide.RED_TONE, 40, gridBagContraints.CENTER);
  		this.refresh();
  		goTo();
  		
@@ -25,7 +25,7 @@ public class WelcomeView extends LJPanel{
 	@Override
 	protected void goTo() {
 		//Go to another page after 5 Second
-		Timer t = new Timer(5000, new ActionListener() {
+		Timer t = new Timer(4000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
             	GUIController mainGui = GUIController.getInstance();
