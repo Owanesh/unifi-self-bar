@@ -21,6 +21,7 @@ public class SelectView extends LJPanel {
 		addButtonListener(btnCheckout,"checkout");
 		this.add(btnAnotherOrder,gridBagContraints.CENTER);
 		addButtonListener(btnAnotherOrder,"selectproduct");
+		refresh();
 	}
 
 	@Override

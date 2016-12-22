@@ -23,10 +23,12 @@ import it.unifi.selfbar.graphic.LJPanel;
 
 public class SupplementListView extends LJPanel {
 	private JLabel panelTitle = new JLabel(GraphicGuide.SELECT_SUPPLEMENT_VIEW);
-	private JLabel productsLabel = new JLabel("i nostri supplementi");
+	private JLabel supplementLabel = new JLabel("Our Supplements");
  	private JLabel yourChoiceLabel = new JLabel(GraphicGuide.YOUR_CHOICE);
  	private JButton btnCheckout=new JButton("Go to checkout");
-	private JList list = new JList();  
+ 	private JButton btnNext=new JButton("Next");
+	private JList supplementList = new JList();  
+	private JList genericSupplementList = new JList();  
 
  	private int selectBetweenCoffeeOrCocktail;
  	public void setTypeOfSupplement(int i){
@@ -42,12 +44,12 @@ public class SupplementListView extends LJPanel {
 	public SupplementListView() {
 		this.add(panelTitle, GraphicGuide.RED_TONE, 40, gridBagContraints.FIRST_LINE_START);
 		this.add(yourChoiceLabel, Color.WHITE, 10, gridBagContraints.LAST_LINE_START);
-  		addProductFromMap(productsLabel,ViewSets.getProduct());
+  		addProductFromMap(supplementLabel,ViewSets.getCoffeeSupplement(),supplementList);
+  		addProductFromMap(ViewSets.getGenericSupplement(),genericSupplementList);
   		this.add(btnCheckout, gridBagContraints.LAST_LINE_END);
 	}
 
 	private void compositeListFrom(HashMap hash, JList jlist){
-
 		jlist.setListData(hash.keySet().toArray());
 		jlist.add(new JSeparator(SwingConstants.VERTICAL));
 		jlist.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -68,8 +70,12 @@ public class SupplementListView extends LJPanel {
         });	    
 	}
 	
-	private void addProductFromMap(JLabel title, HashMap hashmap){
+	private void addProductFromMap(JLabel title, HashMap hashmap,JList list){
 		this.add(title, GraphicGuide.RED_TONE, GraphicGuide.LABEL_FONTSIZE, gridBagContraints.LINE_START);
+		compositeListFrom(hashmap,list);
+ 		this.add(list,gridBagContraints.LINE_START);
+	}	
+	private void addProductFromMap(HashMap hashmap,JList list){
 		compositeListFrom(hashmap,list);
  		this.add(list,gridBagContraints.LINE_START);
 	}
