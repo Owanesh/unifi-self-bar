@@ -18,7 +18,7 @@ public class GUIController extends JFrame implements ComponentInterface{
 	JPanel oldPnl;
 	JPanel currentPnl;
 	private ViewSets viewManager = new ViewSets();
-	private static GUIController instance = null;
+ 	private static GUIController instance = null;
 	
 	/* Singleton */
  	public static  GUIController getInstance() {
@@ -104,6 +104,7 @@ public class GUIController extends JFrame implements ComponentInterface{
 				| UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
+		this.setLayout(new GridBagLayout());
 
 	}
  

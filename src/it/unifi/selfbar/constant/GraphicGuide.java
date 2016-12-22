@@ -19,7 +19,8 @@ public static final int WINDOW_HEIGHT = 600;
 public static final String WELCOME_VIEW="Welcome";
 public static final String SELECT_PRODUCT_VIEW="Select Product";
 public static final String SELECT_SUPPLEMENT_VIEW="Select Supplement";
-
+public static final String SELECT_YOUR_CHOICE="Pre Checkout";
+public static final String GO_ON="Next";
 
 /* Labels */
 public static final int LABEL_FONTSIZE=20;
