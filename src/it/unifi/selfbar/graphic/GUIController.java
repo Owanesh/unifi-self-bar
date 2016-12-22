@@ -40,8 +40,13 @@ public class GUIController extends JFrame implements ComponentInterface{
 	} 
 	
 	public void setCurrentPanel(JPanel newPanel) {
-		if(oldPnl!=null)
+ System.out.println("dentro la setCurrent con "+newPanel.toString());
+		if(oldPnl!=null){
 			this.remove(oldPnl);
+			System.out.println("=== removed old panel "+oldPnl.toString());
+	}
+		else
+			this.currentPnl = newPanel;
 		this.oldPnl = this.currentPnl;
 		this.currentPnl = newPanel;
   		this.add(currentPnl);

@@ -42,6 +42,7 @@ public class ProductListView extends LJPanel {
 		addButtonListener(btnSelectSupplement,"selectsupplement");
   		this.add(btnNext, gridBagContraints.LAST_LINE_END);
 		addButtonListener(btnNext,"precheckout");
+		refresh();
 
 	}
 

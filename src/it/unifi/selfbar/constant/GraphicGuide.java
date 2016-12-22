@@ -10,6 +10,7 @@ public static final Color RED_TONE = new Color(178, 80,80) ;
 
 /* Messages */
 public static final String WELCOME_MESSAGE="Welcome to SelfBar";
+public static final String GOODBYE_MESSAGE="Goodbye :)";
 
 /* WindowConfig */
 public static final int WINDOW_WIDTH = 800;
