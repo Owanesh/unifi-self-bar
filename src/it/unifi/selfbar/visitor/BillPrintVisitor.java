@@ -7,15 +7,26 @@ import it.unifi.selfbar.order.Order;
 
 public class BillPrintVisitor implements Visitor {
 
+	private StringBuilder billSummary;
+
 	@Override
 	public void visitBill(Bill bill) {
+		billSummary = new StringBuilder();
 		List<Order> list = bill.getListOrders();
+		createString(bill, list);
+	}
+
+	private void createString(Bill bill, List<Order> list) {
 		for (Order order : list) {
-			System.out.println(order.toString());
-			System.out.println("Total: " + String.format("%.2f", order.getPrice()));
-			System.out.println("--------------------------------------");
+			billSummary.append(order.toString());
+			billSummary.append("Total: " + String.format("%.2f", order.getPrice()));
+			billSummary.append("--------------------------------------");
 		}
-		System.out.println("TOTAL PRICE: " + String.format("%.2f", bill.getTotal()));
+		billSummary.append("TOTAL PRICE: " + String.format("%.2f", bill.getTotal()));
+	}
+
+	public String getBillSummary() {
+		return billSummary.toString();
 	}
 
 }
