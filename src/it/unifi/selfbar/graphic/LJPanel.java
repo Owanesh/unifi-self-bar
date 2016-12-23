@@ -2,6 +2,7 @@ package it.unifi.selfbar.graphic;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -18,7 +19,9 @@ public abstract class LJPanel extends JPanel implements ComponentInterface {
 		super(new GridBagLayout());
 		setBackground(GraphicGuide.BACKGROUND_TONE);
 		gridBagContraints = new GridBagConstraints();
- 	}
+		gridBagContraints.weightx=1;
+		gridBagContraints.weighty=1;
+	}
 
 	public void add(JLabel lbl, Color color, int size, int position){
 		prepareLabel( lbl, color, size);
@@ -26,13 +29,14 @@ public abstract class LJPanel extends JPanel implements ComponentInterface {
 	}
 	
 	public Component add(Component obj,int i){
-		gridBagContraints.anchor=i;
-		gridBagContraints.fill = GridBagConstraints.HORIZONTAL;
-
-		this.add(obj,gridBagContraints);
+ 
+        gridBagContraints.fill = GridBagConstraints.HORIZONTAL;
+        gridBagContraints.anchor = i;	
+        gridBagContraints.gridwidth = 2; 
+this.add(obj,gridBagContraints);
 		return obj;
 	}
-	public void prepareLabel(JLabel lbl, Color color, int size){
+	private void prepareLabel(JLabel lbl, Color color, int size){
 		lbl.setForeground(color);
 		lbl.setFont(new Font("Courier", Font.PLAIN , size));
 		add(lbl);

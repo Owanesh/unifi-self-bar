@@ -26,7 +26,7 @@ public class Middleware {
 	}
 	
 	public void pay(PaymentStrategy p){
-		payResult = table.requestPayment(p);
+	//	payResult = table.requestPayment(p);
 	}
 	
 	public boolean getPayResult(){
