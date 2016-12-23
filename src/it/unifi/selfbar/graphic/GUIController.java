@@ -3,14 +3,12 @@ package it.unifi.selfbar.graphic;
 import javax.swing.*;
  
 
-import it.unifi.selfbar.constant.Constants;
-import it.unifi.selfbar.constant.GraphicGuide;
-import it.unifi.selfbar.constant.ViewSets;
+ 
+import it.unifi.selfbar.constant.*;
 import it.unifi.selfbar.exception.ErrorMessages;
-import it.unifi.selfbar.graphic.view.WelcomeView;
+import it.unifi.selfbar.middleware.Middleware;
 
 import java.awt.*;
-import java.util.HashMap;
 
 public class GUIController extends JFrame implements ComponentInterface{
 
@@ -19,7 +17,11 @@ public class GUIController extends JFrame implements ComponentInterface{
 	JPanel currentPnl;
 	private ViewSets viewManager = new ViewSets();
  	private static GUIController instance = null;
+	private Middleware middleware;
 	
+	public Middleware getMiddleware(){
+		return middleware;
+	}
 	/* Singleton */
  	public static  GUIController getInstance() {
 	      if(instance == null) {
@@ -35,6 +37,7 @@ public class GUIController extends JFrame implements ComponentInterface{
 		this.setPreferredSize(new Dimension(GraphicGuide.WINDOW_WIDTH, GraphicGuide.WINDOW_HEIGHT));
 		configureBasicLayout(); //look and feel by system
 		switchTo(GraphicGuide.WELCOME_VIEW); //initial view
+		middleware=new Middleware();
 		refresh();
 		this.setVisible(true);
 	} 
@@ -45,11 +48,12 @@ public class GUIController extends JFrame implements ComponentInterface{
 			this.remove(oldPnl);
 			System.out.println("=== removed old panel "+oldPnl.toString());
 	}
-		else
+		else{
 			this.currentPnl = newPanel;
+		}
 		this.oldPnl = this.currentPnl;
 		this.currentPnl = newPanel;
-  		this.add(currentPnl);
+  		this.add(currentPnl,BorderLayout.CENTER);
 		this.refresh();
 	}
 	
@@ -109,7 +113,7 @@ public class GUIController extends JFrame implements ComponentInterface{
 				| UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
-		this.setLayout(new GridBagLayout());
+		this.setLayout(new BorderLayout());
 
 	}
  

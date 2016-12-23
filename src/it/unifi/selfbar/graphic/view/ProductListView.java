@@ -18,11 +18,12 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
+ 
 import it.unifi.selfbar.constant.GraphicGuide;
 import it.unifi.selfbar.constant.ViewSets;
 import it.unifi.selfbar.graphic.GUIController;
 import it.unifi.selfbar.graphic.LJPanel;
+import it.unifi.selfbar.order.*;
 
 public class ProductListView extends LJPanel {
 	private JLabel panelTitle = new JLabel(GraphicGuide.SELECT_PRODUCT_VIEW);
@@ -62,8 +63,8 @@ public class ProductListView extends LJPanel {
             @Override
             public void valueChanged(ListSelectionEvent arg0) {
                 if (!arg0.getValueIsAdjusting()) {
-                	yourChoiceLabel.setText(GraphicGuide.YOUR_CHOICE+" "+list.getSelectedValue().toString());
-                }
+                		yourChoiceLabel.setText(GraphicGuide.YOUR_CHOICE+" "+list.getSelectedValue().toString());              		
+                } 
             } 
         });	    
 	}
@@ -73,11 +74,31 @@ public class ProductListView extends LJPanel {
 		compositeListFrom(hashmap,list);
  		this.add(list,gridBagContraints.LINE_START);
 	}
-	
-	
+		
 	@Override
 	protected void goTo() {
 		GUIController mainGui = GUIController.getInstance();
+		String name= list.getSelectedValue().toString().toLowerCase().trim();
+		
+     	switch(name){
+    		case "arabic":
+    			Arabic arabic = new Arabic();
+    			mainGui.getMiddleware().prepareOrder(arabic);
+    			break;
+    		case "brasilian":
+    			Brasilian brasilian = new Brasilian();
+    			mainGui.getMiddleware().prepareOrder(brasilian);
+    			break;  
+    		case "martini":
+    			Martini martini = new Martini();
+    			mainGui.getMiddleware().prepareOrder(martini);
+    			break;
+    		case "tequila":
+    			Tequila tequila = new Tequila();
+    			mainGui.getMiddleware().prepareOrder(tequila);
+    			break;
+    		}
+     	
 		mainGui.switchTo(this.nextView);		
 	}
 
