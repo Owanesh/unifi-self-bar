@@ -11,6 +11,7 @@ import it.unifi.selfbar.order.Order;
 public class BillLeastPopularOrderVisitor implements Visitor {
 
 	private Order orderResult;
+	
 	public void visitBill(Bill bill) {
 		List<Order> list = bill.getListOrders();
 		HashMap<Order, Integer> hashmap = createTableOfOccurence(list);

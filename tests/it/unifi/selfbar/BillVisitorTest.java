@@ -26,14 +26,11 @@ public class BillVisitorTest {
 
 	}
 
-	@Test
-	public void visitPrintTest() {
-		b.accept(new BillPrintVisitor());
-	}
 
 	@Test
 	public void visitLeastPopularOrderTest() {
 		b.accept(new BillLeastPopularOrderVisitor());
+		
 	}
 
 }

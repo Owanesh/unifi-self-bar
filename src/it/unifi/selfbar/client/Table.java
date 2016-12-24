@@ -41,10 +41,6 @@ public abstract class Table {
 		return bill;
 	}
 
-	public void setBill(Bill bill) {
-		this.bill = bill;
-	}
-
 	public void reset() {
 		bill = createBill();
 	}
