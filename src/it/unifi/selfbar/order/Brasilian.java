@@ -18,19 +18,11 @@ public class Brasilian implements Coffee {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public double getSimplePrice() {
 		return Constants.BRASILIAN_VALUE;
-=======
+	}	
 	public Order getOrder() throws OrderNotDecorableException {
 		throw new OrderNotDecorableException(ErrorMessages.THIS_ORDER_IS_NOT_DECORATOR);
->>>>>>> Reduced Hardcode
 	}
-
-	@Override
-	public Order getOrder() throws OrderNotDecorableException {
-		throw new OrderNotDecorableException("Order non decorable exception");
-	}
-
 
 }
