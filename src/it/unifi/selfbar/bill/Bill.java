@@ -48,7 +48,5 @@ public abstract class Bill {
 		v.visitBill(this);
 	}
 
-	public boolean removeOrder(Order order) {
-		return listOrders.remove(order);
-	}
+
 }

@@ -28,12 +28,6 @@ public class TableTest {
 
  
 
-	@Test
-	public void removeOrderWithReferenceTest() {
-		Order o = new Martini();
-		table.addOrder(o);
-		assertTrue(table.removeOrder(o));
-		assertFalse(table.removeOrder(o));// già rimosso
-	}
+
 
 }
