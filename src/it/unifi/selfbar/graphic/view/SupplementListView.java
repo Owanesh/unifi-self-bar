@@ -18,7 +18,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import it.unifi.selfbar.constant.GraphicGuide;
-import it.unifi.selfbar.constant.ViewSets;
+import it.unifi.selfbar.constant.AppSettings;
 import it.unifi.selfbar.graphic.GUIController;
 import it.unifi.selfbar.graphic.LJPanel;
 import it.unifi.selfbar.order.*;
@@ -44,9 +44,9 @@ public class SupplementListView extends LJPanel {
 		Order o = gc.getMiddleware().getPreparedOrder();
 		ArrayList<String> listOfSupplements;
 		if(o instanceof Coffee){
-			listOfSupplements= ViewSets.getCoffeeDecoration();
+			listOfSupplements= AppSettings.getCoffeeDecoration();
 		}else{
-			listOfSupplements = ViewSets.getCocktailDecoration();
+			listOfSupplements = AppSettings.getCocktailDecoration();
 		}
   		addProductFromMap(supplementLabel,listOfSupplements,supplementList);
    		this.add(btnCheckout, gridBagContraints.LAST_LINE_END);
@@ -92,7 +92,7 @@ public class SupplementListView extends LJPanel {
 	@Override
 	protected void goTo() {
 		GUIController mainGui = GUIController.getInstance();
-		String name= supplementList.getSelectedValue().toString().toLowerCase().trim();
+		String name= mainGui.sanitizeString(supplementList.getSelectedValue().toString());
 		Order dynamicOrder = mainGui.getMiddleware().getPreparedOrder();
      	switch(name){
     		case "ice":

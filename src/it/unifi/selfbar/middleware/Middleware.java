@@ -10,10 +10,10 @@ public class Middleware {
 	private Bill bill;
 	private Table table;
 	private Order order;
-	private boolean payResult;
-	
+ 	
 	
 	public void prepareOrder(Order o){
+		System.out.println("i'm preparing order with: "+o.toString());
 		order=o;
 	}
 	
@@ -29,11 +29,14 @@ public class Middleware {
 	}
 	
 	public void pay(PaymentStrategy p){
-	//	payResult = table.requestPayment(p);
-	}
+	  table.requestPayment(p);
+  	}
 	
 	public boolean getPayResult(){
-		return payResult;
+		return true;
 	}
 	
+	public double getTotal(){
+		return bill.getTotal();
+	}
 }

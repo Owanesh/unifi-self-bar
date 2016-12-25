@@ -27,6 +27,11 @@ public class Tequila implements Cocktail {
 	public double getSimplePrice() {
 		return Constants.TEQUILA_VALUE;
 	}
+	
+	@Override
+	public String toString(){
+		return this.getClass().getSimpleName()+" : "+getSimplePrice();
+	}
 	 
 
 }

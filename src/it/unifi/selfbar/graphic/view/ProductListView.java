@@ -21,7 +21,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
  
 import it.unifi.selfbar.constant.GraphicGuide;
-import it.unifi.selfbar.constant.ViewSets;
+import it.unifi.selfbar.constant.AppSettings;
 import it.unifi.selfbar.graphic.GUIController;
 import it.unifi.selfbar.graphic.LJPanel;
 import it.unifi.selfbar.order.*;
@@ -43,7 +43,7 @@ public class ProductListView extends LJPanel {
 	public void initializePanel(){
 		this.add(panelTitle, GraphicGuide.RED_TONE, 40, gridBagContraints.FIRST_LINE_START);
 		this.add(yourChoiceLabel, Color.WHITE, 10, gridBagContraints.LAST_LINE_START);
-  		addProductFromMap(productsLabel,ViewSets.getProduct());
+  		addProductFromMap(productsLabel,AppSettings.getProduct());
   		this.add(btnSelectSupplement, gridBagContraints.LAST_LINE_END);
 		addButtonDestinatino(btnSelectSupplement,"selectsupplement");
   		this.add(btnNext, gridBagContraints.LAST_LINE_END);
@@ -83,7 +83,7 @@ public class ProductListView extends LJPanel {
 	@Override
 	protected void goTo() {
 		GUIController mainGui = GUIController.getInstance();
-		String name= list.getSelectedValue().toString().toLowerCase().trim();
+		String name= mainGui.sanitizeString(list.getSelectedValue().toString());
      	switch(name){
     		case "arabic":
     			Arabic arabic = new Arabic();

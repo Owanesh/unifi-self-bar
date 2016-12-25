@@ -21,6 +21,8 @@ public static final String WELCOME_VIEW="Welcome";
 public static final String SELECT_PRODUCT_VIEW="Select Product";
 public static final String SELECT_SUPPLEMENT_VIEW="Select Supplement";
 public static final String SELECT_YOUR_CHOICE="Pre Checkout";
+public static final String SELECT_PAYMENT_METHOD="Payment method";
+public static final String GOODBYE_VIEW="goodbye";
 public static final String GO_ON="Next";
 
 /* Labels */

@@ -15,7 +15,7 @@ public class GUIController extends JFrame implements ComponentInterface{
 	/* Fields */
 	LJPanel oldPnl;
 	LJPanel currentPnl;
-	private ViewSets viewManager = new ViewSets();
+	private AppSettings viewManager = new AppSettings();
  	private static GUIController instance = null;
 	private Middleware middleware;
 	
@@ -69,14 +69,8 @@ public class GUIController extends JFrame implements ComponentInterface{
 	}
 
 
-	@Override
-	public void reset() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	private String sanitizeString(String key){
+
+	public String sanitizeString(String key){
 		key = key.toLowerCase();
 		key = key.replace(" ",""); //remove spaces
 		key = key.trim();
@@ -112,8 +106,11 @@ public class GUIController extends JFrame implements ComponentInterface{
 			e.printStackTrace();
 		}
 		this.setLayout(new BorderLayout());
-
 	}
- 
- 
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

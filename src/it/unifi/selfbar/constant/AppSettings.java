@@ -9,13 +9,14 @@ import it.unifi.selfbar.graphic.view.*;
 import it.unifi.selfbar.order.*;
 import it.unifi.selfbar.order.decorator.*;
 
-public class ViewSets {
+public class AppSettings {
 
 	private static HashMap<String, LJPanel> view;
 	private static ArrayList<String> product;
   	private static ArrayList<String> genericDecoration;
 	private static ArrayList<String> cocktailDecoration;
 	private static ArrayList<String> coffeeDecoration;
+	private static ArrayList<String> paymentMethod;
 
 	public static  HashMap<String,LJPanel> getView() {
 		if (view == null) {
@@ -29,6 +30,12 @@ public class ViewSets {
 			product = initializeProducts();
 		}
 		return product;
+	}
+	public static  ArrayList<String> getPaymentMethod() {
+		if (paymentMethod == null) {
+			paymentMethod = initializePaymentMethod();
+		}
+		return paymentMethod;
 	}
 
 	public static  ArrayList<String> getCoffeeDecoration() {
@@ -64,6 +71,14 @@ public class ViewSets {
 		coffeeDecoration.add("Cream");
 		return coffeeDecoration;
 	}	
+
+	private static ArrayList<String> initializePaymentMethod(){
+		paymentMethod = new ArrayList<String>();
+		paymentMethod.add("Money");
+		paymentMethod.add("Credit card");
+		return paymentMethod;
+	}
+	
 	private static  ArrayList<String> initializeGenericDecoration() {
 		genericDecoration = new ArrayList<String>();
 		genericDecoration.add("Ice");

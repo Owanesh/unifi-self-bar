@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import it.unifi.selfbar.constant.GraphicGuide;
 import it.unifi.selfbar.graphic.GUIController;
 import it.unifi.selfbar.graphic.LJPanel;
 
@@ -24,6 +25,7 @@ initializePanel();
 	@Override
 	protected void goTo() {
 		GUIController mainGui = GUIController.getInstance();
+		mainGui.getMiddleware().confirmOrder();
 		mainGui.switchTo(this.nextView);	
 	}
 	
@@ -45,7 +47,7 @@ initializePanel();
 	protected void initializePanel() {
 		gridBagContraints.fill=GridBagConstraints.HORIZONTAL;
 		this.add(btnCheckout,gridBagContraints.CENTER);
-		addButtonListener(btnCheckout,"checkout");
+		addButtonListener(btnCheckout,GraphicGuide.SELECT_PAYMENT_METHOD);
 		this.add(btnAnotherOrder,gridBagContraints.CENTER);
 		addButtonListener(btnAnotherOrder,"selectproduct");
 		refresh();		
