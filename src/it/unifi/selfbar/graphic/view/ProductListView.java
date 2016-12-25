@@ -30,48 +30,52 @@ public class ProductListView extends LJPanel {
 	private JLabel productsLabel = new JLabel(GraphicGuide.OUR_PRODUCTS_LABEL);
  	private JLabel yourChoiceLabel = new JLabel(GraphicGuide.YOUR_CHOICE);
 	private JList list = new JList();  
-
 	private String nextView;
 	private JButton btnNext = new JButton(GraphicGuide.GO_ON);
 	private JButton btnSelectSupplement = new JButton(GraphicGuide.SELECT_SUPPLEMENT_VIEW);
 	
 	public ProductListView() {
+		initializePanel();
+		addListner(list);
+	}
+	
+	public void initializePanel(){
 		this.add(panelTitle, GraphicGuide.RED_TONE, 40, gridBagContraints.FIRST_LINE_START);
 		this.add(yourChoiceLabel, Color.WHITE, 10, gridBagContraints.LAST_LINE_START);
   		addProductFromMap(productsLabel,ViewSets.getProduct());
   		this.add(btnSelectSupplement, gridBagContraints.LAST_LINE_END);
-		addButtonListener(btnSelectSupplement,"selectsupplement");
+		addButtonDestinatino(btnSelectSupplement,"selectsupplement");
   		this.add(btnNext, gridBagContraints.LAST_LINE_END);
-		addButtonListener(btnNext,"precheckout");
+		addButtonDestinatino(btnNext,"precheckout");
 		refresh();
-
 	}
-
-	private void compositeListFrom(HashMap hash, JList jlist){
-
-		jlist.setListData(hash.keySet().toArray());
-		jlist.add(new JSeparator(SwingConstants.VERTICAL));
-		jlist.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		jlist.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		jlist.setVisibleRowCount(-1);	
-		addListner(jlist);
 	
+	private void compositeListFrom(HashMap hash){
+		list.setListData(hash.keySet().toArray());
+		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		list.setVisibleRowCount(-1); //select only one element
+		list.ensureIndexIsVisible(-1); //deselect all element
 	}
 	
 	private void addListner(JList list){
 		list.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent arg0) {
-                if (!arg0.getValueIsAdjusting()) {
-                		yourChoiceLabel.setText(GraphicGuide.YOUR_CHOICE+" "+list.getSelectedValue().toString());              		
-                } 
+            	if(list.getSelectedValue()!=null){
+	                if (!arg0.getValueIsAdjusting()) {
+	                		yourChoiceLabel.setText(GraphicGuide.YOUR_CHOICE+" "+list.getSelectedValue().toString());              		
+	                } 
+            	}else{
+            		list.clearSelection();
+            	}
             } 
         });	    
 	}
 	
 	private void addProductFromMap(JLabel title, HashMap hashmap){
 		this.add(title, GraphicGuide.RED_TONE, GraphicGuide.LABEL_FONTSIZE, gridBagContraints.LINE_START);
-		compositeListFrom(hashmap,list);
+		compositeListFrom(hashmap);
  		this.add(list,gridBagContraints.LINE_START);
 	}
 		
@@ -79,7 +83,6 @@ public class ProductListView extends LJPanel {
 	protected void goTo() {
 		GUIController mainGui = GUIController.getInstance();
 		String name= list.getSelectedValue().toString().toLowerCase().trim();
-		
      	switch(name){
     		case "arabic":
     			Arabic arabic = new Arabic();
@@ -98,17 +101,17 @@ public class ProductListView extends LJPanel {
     			mainGui.getMiddleware().prepareOrder(tequila);
     			break;
     		}
-     	
-		mainGui.switchTo(this.nextView);		
+     	mainGui.switchTo(this.nextView);		
 	}
 
 	@Override
 	public void reset() {
-		// TODO Auto-generated method stub
-		
+		this.removeAll();
+		list.clearSelection();
+ 		initializePanel();
 	}
 	
-	private void addButtonListener(JButton btn,String destination){
+	private void addButtonDestinatino(JButton btn,String destination){
 		btn.addActionListener(new ActionListener()
 		{
 			@Override

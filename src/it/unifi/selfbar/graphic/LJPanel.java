@@ -33,7 +33,7 @@ public abstract class LJPanel extends JPanel implements ComponentInterface {
         gridBagContraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagContraints.anchor = i;	
         gridBagContraints.gridwidth = 2; 
-this.add(obj,gridBagContraints);
+        this.add(obj,gridBagContraints);
 		return obj;
 	}
 	private void prepareLabel(JLabel lbl, Color color, int size){
@@ -41,7 +41,6 @@ this.add(obj,gridBagContraints);
 		lbl.setFont(new Font("Courier", Font.PLAIN , size));
 		add(lbl);
 	}
-	
 	public void refresh() {
 		this.repaint();
 		this.validate();
