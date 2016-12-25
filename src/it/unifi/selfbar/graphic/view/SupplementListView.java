@@ -8,14 +8,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
+ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
-import javax.swing.ListModel;
-import javax.swing.ListSelectionModel;
+ import javax.swing.JSeparator;
+ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -34,12 +31,7 @@ public class SupplementListView extends LJPanel {
  	private JButton btnCheckout=new JButton("Go to checkout");
  	private JList supplementList = new JList();  
 	private String nextView;
- 	private int selectBetweenCoffeeOrCocktail;
- 	
- 	public void setTypeOfSupplement(int i){
- 		selectBetweenCoffeeOrCocktail=i;
- 	}
- 	
+  	
  	public void setYourChoiceLabel(JLabel ycl){
  		this.yourChoiceLabel=ycl;
  	}
@@ -56,16 +48,15 @@ public class SupplementListView extends LJPanel {
 		this.add(yourChoiceLabel, Color.WHITE, 10, gridBagContraints.LAST_LINE_START);
 		GUIController gc = GUIController.getInstance();
 		Order o = gc.getMiddleware().getPreparedOrder();
-		ArrayList<String> hashmapOfProducts;
+		ArrayList<String> listOfSupplements;
 		if(o instanceof Coffee){
-			hashmapOfProducts= ViewSets.getCoffeeDecoration();
+			listOfSupplements= ViewSets.getCoffeeDecoration();
 		}else{
-			hashmapOfProducts = ViewSets.getCocktailDecoration();
-
+			listOfSupplements = ViewSets.getCocktailDecoration();
 		}
-  		addProductFromMap(supplementLabel,hashmapOfProducts,supplementList);
+  		addProductFromMap(supplementLabel,listOfSupplements,supplementList);
    		this.add(btnCheckout, gridBagContraints.LAST_LINE_END);
-		addButtonDestinatino(btnCheckout,"precheckout");
+   		addButtonDestination(btnCheckout,"precheckout");
  	}
 
 	private void compositeListFrom(ArrayList<String> hash, JList jlist){
@@ -141,7 +132,7 @@ public class SupplementListView extends LJPanel {
 		initializePanel();
 	}
 	
-	private void addButtonDestinatino(JButton btn,String destination){
+	private void addButtonDestination(JButton btn,String destination){
 		btn.addActionListener(new ActionListener()
 		{
 			@Override
