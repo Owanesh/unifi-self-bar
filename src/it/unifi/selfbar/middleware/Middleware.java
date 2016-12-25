@@ -17,6 +17,9 @@ public class Middleware {
 		order=o;
 	}
 	
+	public Order getPreparedOrder(){
+		return order;
+	}
 	public void sendOrder(Order o){
 		bill.addOrder(o);
 	}
