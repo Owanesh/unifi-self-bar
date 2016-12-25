@@ -60,15 +60,15 @@ public class ViewSets {
 		return product;
 	}
 
- 
-	
-	
-	private static  HashMap<String, LJPanel> initializeViews() {
+ 	private static  HashMap<String, LJPanel> initializeViews() {
 		view = new HashMap<>();
 		view.put("welcome", new WelcomeView());
 		view.put("selectproduct",new ProductListView());
- 
+		view.put("selectsupplement",new SupplementListView());
+		view.put("precheckout",new SelectView());
+		view.put("goodbye",new GoodbyeView());
+		view.put("paymentmethod",new PaymentMethodView());
+		view.put("checkout", new BillView());
 		return view;
 	}
-
 }
