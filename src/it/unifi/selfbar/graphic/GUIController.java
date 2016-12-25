@@ -17,10 +17,13 @@ public class GUIController extends JFrame implements ComponentInterface{
 	LJPanel currentPnl;
 	private AppSettings viewManager = new AppSettings();
  	private static GUIController instance = null;
-	private Middleware middleware;
+	private static Middleware middleware=null;
 	
-	public Middleware getMiddleware(){
-		return middleware;
+	public static Middleware getMiddleware(){
+		if(middleware == null) {
+			middleware = new Middleware();
+	      }
+	      return middleware;
 	}
 	/* Singleton */
  	public static  GUIController getInstance() {

@@ -35,13 +35,14 @@ public class SupplementListView extends LJPanel {
  
 	public SupplementListView() {
 		initializePanel();
+   		addButtonDestination(btnCheckout,"precheckout");
+
 	}
 
 	public void initializePanel(){
 		this.add(panelTitle, GraphicGuide.RED_TONE, 40, gridBagContraints.FIRST_LINE_START);
 		this.add(yourChoiceLabel, Color.WHITE, 10, gridBagContraints.LAST_LINE_START);
-		GUIController gc = GUIController.getInstance();
-		Order o = gc.getMiddleware().getPreparedOrder();
+		Order o = GUIController.getMiddleware().getPreparedOrder();
 		ArrayList<String> listOfSupplements;
 		if(o instanceof Coffee){
 			listOfSupplements= AppSettings.getCoffeeDecoration();
@@ -50,7 +51,6 @@ public class SupplementListView extends LJPanel {
 		}
   		addProductFromMap(supplementLabel,listOfSupplements,supplementList);
    		this.add(btnCheckout, gridBagContraints.LAST_LINE_END);
-   		addButtonDestination(btnCheckout,"precheckout");
  	}
 
 	private void compositeListFrom(ArrayList<String> hash, JList jlist){

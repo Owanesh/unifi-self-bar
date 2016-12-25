@@ -38,6 +38,8 @@ public class ProductListView extends LJPanel {
 	public ProductListView() {
 		initializePanel();
 		addListner(list);
+		addButtonDestinatino(btnSelectSupplement,"selectsupplement");
+		addButtonDestinatino(btnNext,"precheckout");
 	}
 	
 	public void initializePanel(){
@@ -45,9 +47,8 @@ public class ProductListView extends LJPanel {
 		this.add(yourChoiceLabel, Color.WHITE, 10, gridBagContraints.LAST_LINE_START);
   		addProductFromMap(productsLabel,AppSettings.getProduct());
   		this.add(btnSelectSupplement, gridBagContraints.LAST_LINE_END);
-		addButtonDestinatino(btnSelectSupplement,"selectsupplement");
   		this.add(btnNext, gridBagContraints.LAST_LINE_END);
-		addButtonDestinatino(btnNext,"precheckout");
+
 		refresh();
 	}
 	
