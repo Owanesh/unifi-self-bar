@@ -46,5 +46,11 @@ public abstract class LJPanel extends JPanel implements ComponentInterface {
 		this.validate();
 	}
 	
+	@Override
+	public void reset() {
+		this.removeAll();
+		initializePanel();
+	}
+	protected abstract void initializePanel();
 	protected abstract void goTo();
 }

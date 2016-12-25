@@ -14,17 +14,13 @@ public class BillView extends LJPanel {
 		initializePanel();
 	}
 
-	private void initializePanel(){
+	protected void initializePanel(){
 			this.add(btnCheckout,gridBagContraints.CENTER);
 			addButtonDestinatino(btnCheckout,"checkout");
 			this.refresh();
 	}
 	
-	@Override
-	public void reset() {
-		this.removeAll();
-		this.initializePanel();
-	}
+
 
 	@Override
 	protected void goTo() {

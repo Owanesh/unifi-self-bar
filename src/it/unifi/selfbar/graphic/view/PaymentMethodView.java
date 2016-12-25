@@ -8,16 +8,20 @@ public class PaymentMethodView extends LJPanel {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void reset() {
-		// TODO Auto-generated method stub
-
-	}
+ 
 
 	@Override
 	protected void goTo() {
 		// TODO Auto-generated method stub
 
+	}
+
+
+
+	@Override
+	protected void initializePanel() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

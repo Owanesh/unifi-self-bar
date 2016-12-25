@@ -16,8 +16,7 @@ public class WelcomeView extends LJPanel{
 	private JLabel welcomeMessage = new JLabel(GraphicGuide.WELCOME_MESSAGE);
 	
 	public WelcomeView() {
-		this.add(welcomeMessage, GraphicGuide.RED_TONE, 40, gridBagContraints.CENTER);
- 		this.refresh();
+		initializePanel();
  		goTo();
  		
 	}
@@ -37,10 +36,12 @@ public class WelcomeView extends LJPanel{
 		
 	}
 
+ 
+
 	@Override
-	public void reset() {
-		// TODO Auto-generated method stub
-		
+	protected void initializePanel() {
+		this.add(welcomeMessage, GraphicGuide.RED_TONE, 40, gridBagContraints.CENTER);
+ 		this.refresh();		
 	}
 	
  

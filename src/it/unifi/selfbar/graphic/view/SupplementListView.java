@@ -32,13 +32,7 @@ public class SupplementListView extends LJPanel {
  	private JList supplementList = new JList();  
 	private String nextView;
   	
- 	public void setYourChoiceLabel(JLabel ycl){
- 		this.yourChoiceLabel=ycl;
- 	}
- 	public void setYourChoiceLabel(String ycl){
- 		this.yourChoiceLabel.setText(ycl);
- 	}
- 	
+ 
 	public SupplementListView() {
 		initializePanel();
 	}
@@ -118,7 +112,7 @@ public class SupplementListView extends LJPanel {
     			mainGui.getMiddleware().prepareOrder(soda);
     			break;
     		case "appetizer":
-				Appetizer appetizer = new Appetizer((Appetizer)dynamicOrder);
+				Appetizer appetizer = new Appetizer((Cocktail)dynamicOrder);
 				mainGui.getMiddleware().prepareOrder(appetizer);
 				break;
 			}
@@ -126,12 +120,7 @@ public class SupplementListView extends LJPanel {
 	}
 
 
-	@Override
-	public void reset() {
-		this.removeAll();
-		initializePanel();
-	}
-	
+
 	private void addButtonDestination(JButton btn,String destination){
 		btn.addActionListener(new ActionListener()
 		{
