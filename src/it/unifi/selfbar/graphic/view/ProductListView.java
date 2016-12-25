@@ -38,8 +38,8 @@ public class ProductListView extends LJPanel {
 	public ProductListView() {
 		initializePanel();
 		addListner(list);
-		addButtonDestinatino(btnSelectSupplement,"selectsupplement");
-		addButtonDestinatino(btnNext,"precheckout");
+		addButtonDestination(btnSelectSupplement,"selectsupplement");
+		addButtonDestination(btnNext,"precheckout");
 	}
 	
 	public void initializePanel(){
@@ -113,7 +113,7 @@ public class ProductListView extends LJPanel {
  		initializePanel();
 	}
 	
-	private void addButtonDestinatino(JButton btn,String destination){
+	private void addButtonDestination(JButton btn,String destination){
 		btn.addActionListener(new ActionListener()
 		{
 			@Override

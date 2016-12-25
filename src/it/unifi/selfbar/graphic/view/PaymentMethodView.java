@@ -76,8 +76,7 @@ public class PaymentMethodView extends LJPanel {
     		case "cash":
     			CashPaymentStrategy cash = new CashPaymentStrategy();
     			mainGui.getMiddleware().pay(cash);
-    			JOptionPane.showMessageDialog(this, "Eggs are not supposed to be green.");
-       			break; 
+        			break; 
     		case "paypal":
     			JOptionPane.showMessageDialog(this, "E se paypal un mi da i soldi a me... che si fa?");
     			break; 
@@ -87,12 +86,12 @@ public class PaymentMethodView extends LJPanel {
     		}
      	
 	     	if(mainGui.getMiddleware().getPayResult()){
-				message="Hai pagato con successo, blavo!";
+				message="You have just spent : "+mainGui.getMiddleware().getTotal();
 			}else{
-				message="Pezzente, tira fuori i soldi";
+				message="System error, try later. You have to pay : "+mainGui.getMiddleware().getTotal();
 			}
-			JOptionPane.showMessageDialog(this, message,"Payment Result",JOptionPane.WARNING_MESSAGE);
-     	mainGui.switchTo(this.nextView);		
+			JOptionPane.showMessageDialog(this, message,"Payment Result",JOptionPane.INFORMATION_MESSAGE);
+      	mainGui.switchTo(this.nextView);		
 	}
 
 	@Override

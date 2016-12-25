@@ -1,19 +1,20 @@
 package it.unifi.selfbar.middleware;
 
 import it.unifi.selfbar.bill.Bill;
+import it.unifi.selfbar.client.SelfBarTable;
 import it.unifi.selfbar.client.Table;
 import it.unifi.selfbar.order.Order;
 import it.unifi.selfbar.payment.PaymentStrategy;
 
 public class Middleware {
 
-	private Bill bill;
-	private Table table;
-	private Order order;
+ 	private Table table;
+	private Order order=null;
  	
-	
+	public Middleware(){
+		table = new SelfBarTable();
+	}
 	public void prepareOrder(Order o){
-		System.out.println("i'm preparing order with: "+o.toString());
 		order=o;
 	}
 	
@@ -21,11 +22,11 @@ public class Middleware {
 		return order;
 	}
 	public void sendOrder(Order o){
-		bill.addOrder(o);
+		table.addOrder(o);
 	}
 	
 	public void confirmOrder(){
-		bill.addOrder(order);
+		table.addOrder(order);
 	}
 	
 	public void pay(PaymentStrategy p){
@@ -37,6 +38,11 @@ public class Middleware {
 	}
 	
 	public double getTotal(){
-		return bill.getTotal();
+		return table.getBill().getTotal();
 	}
+
+	public void test(){
+		System.out.print(table.getBill().getListOrders().toString());
+	}
+	
 }

@@ -17,7 +17,9 @@ public class SelectView extends LJPanel {
  	private String nextView;
  	
 	public SelectView() {
-initializePanel();
+		initializePanel();
+		addButtonListener(btnCheckout,GraphicGuide.SELECT_PAYMENT_METHOD);
+		addButtonListener(btnAnotherOrder,"selectproduct");
 	}
 
  
@@ -47,9 +49,7 @@ initializePanel();
 	protected void initializePanel() {
 		gridBagContraints.fill=GridBagConstraints.HORIZONTAL;
 		this.add(btnCheckout,gridBagContraints.CENTER);
-		addButtonListener(btnCheckout,GraphicGuide.SELECT_PAYMENT_METHOD);
 		this.add(btnAnotherOrder,gridBagContraints.CENTER);
-		addButtonListener(btnAnotherOrder,"selectproduct");
 		refresh();		
 	}
 }

@@ -45,9 +45,11 @@ public class SupplementListView extends LJPanel {
 		Order o = GUIController.getMiddleware().getPreparedOrder();
 		ArrayList<String> listOfSupplements;
 		if(o instanceof Coffee){
-			listOfSupplements= AppSettings.getCoffeeDecoration();
-		}else{
+			listOfSupplements = AppSettings.getCoffeeDecoration();
+		}else if(o instanceof Cocktail){
 			listOfSupplements = AppSettings.getCocktailDecoration();
+		}else{
+			listOfSupplements = new ArrayList<String>();	
 		}
   		addProductFromMap(supplementLabel,listOfSupplements,supplementList);
    		this.add(btnCheckout, gridBagContraints.LAST_LINE_END);
