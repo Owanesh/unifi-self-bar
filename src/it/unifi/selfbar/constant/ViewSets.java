@@ -1,5 +1,6 @@
 package it.unifi.selfbar.constant;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import it.unifi.selfbar.graphic.GUIController;
@@ -10,11 +11,11 @@ import it.unifi.selfbar.order.decorator.*;
 
 public class ViewSets {
 
-	private static  HashMap<String, LJPanel> view;
-	private static  HashMap<String, Class> product;
-	private static  HashMap<String, Class> coffeeSupplements;
-	private static  HashMap<String, Class> cocktailSupplements;
-	private static  HashMap<String, Class> genericSupplements;
+	private static HashMap<String, LJPanel> view;
+	private static ArrayList<String> product;
+  	private static ArrayList<String> genericDecoration;
+	private static ArrayList<String> cocktailDecoration;
+	private static ArrayList<String> coffeeDecoration;
 
 	public static  HashMap<String,LJPanel> getView() {
 		if (view == null) {
@@ -23,40 +24,58 @@ public class ViewSets {
 		return view;
 	}
 
-	public static  HashMap<String,Class> getProduct() {
+	public static  ArrayList<String> getProduct() {
 		if (product == null) {
 			product = initializeProducts();
 		}
 		return product;
 	}
 
-	public static  HashMap<String,Class> getCoffeeSupplement() {
-		if (coffeeSupplements == null) {
-			coffeeSupplements = initializeProducts();
+	public static  ArrayList<String> getCoffeeDecoration() {
+		if (coffeeDecoration == null) {
+			coffeeDecoration = initializeCoffeeDecoration();
 		}
-		return coffeeSupplements;
+		return coffeeDecoration;
 	}
 
-	public static  HashMap<String,Class> getCocktailSupplement() {
-		if (cocktailSupplements == null) {
-			cocktailSupplements = initializeProducts();
+	public static  ArrayList<String> getCocktailDecoration() {
+		if (cocktailDecoration == null) {
+			cocktailDecoration = initializeCocktailDecoration();
 		}
-		return cocktailSupplements;
+		return cocktailDecoration;
 	}
 
-	public static  HashMap<String,Class> getGenericSupplement() {
-		if (genericSupplements == null) {
-			genericSupplements = initializeProducts();
+	public static  ArrayList<String> getGenericDecoration() {
+		if (genericDecoration == null) {
+			genericDecoration = initializeProducts();
 		}
-		return genericSupplements;
+		return genericDecoration;
 	}
 
-	private static  HashMap<String, Class> initializeProducts() {
-		product = new HashMap<>();
-		product.put(Arabic.class.getSimpleName(), Arabic.class.getClass());
-		product.put(Brasilian.class.getSimpleName(), Brasilian.class.getClass());
-		product.put(Martini.class.getSimpleName(), Martini.class.getClass());
-		product.put(Tequila.class.getSimpleName(), Tequila.class.getClass());
+	private static  ArrayList<String> initializeCocktailDecoration() {
+		cocktailDecoration = new ArrayList<String>();
+		cocktailDecoration.add("Soda");
+		cocktailDecoration.add("Appetizer");
+		return cocktailDecoration;
+	}
+	private static  ArrayList<String> initializeCoffeeDecoration() {
+		coffeeDecoration = new ArrayList<String>();
+		coffeeDecoration.add("Milk");
+		coffeeDecoration.add("Cream");
+		return coffeeDecoration;
+	}	
+	private static  ArrayList<String> initializeGenericDecoration() {
+		genericDecoration = new ArrayList<String>();
+		genericDecoration.add("Ice");
+		return genericDecoration;
+	}
+	
+	private static  ArrayList<String> initializeProducts() {
+		product = new ArrayList<String>();
+		product.add("Arabic");
+		product.add("Brasilian");
+		product.add("Martini");
+		product.add("Tequila");
 		return product;
 	}
 

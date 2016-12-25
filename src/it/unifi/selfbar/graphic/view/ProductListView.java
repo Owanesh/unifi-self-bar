@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.DefaultListModel;
@@ -50,8 +51,8 @@ public class ProductListView extends LJPanel {
 		refresh();
 	}
 	
-	private void compositeListFrom(HashMap hash){
-		list.setListData(hash.keySet().toArray());
+	private void compositeListFrom(ArrayList<String> hash){
+		list.setListData(hash.toArray());
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		list.setVisibleRowCount(-1); //select only one element
@@ -73,9 +74,9 @@ public class ProductListView extends LJPanel {
         });	    
 	}
 	
-	private void addProductFromMap(JLabel title, HashMap hashmap){
+	private void addProductFromMap(JLabel title, ArrayList<String> listOfProducts){
 		this.add(title, GraphicGuide.RED_TONE, GraphicGuide.LABEL_FONTSIZE, gridBagContraints.LINE_START);
-		compositeListFrom(hashmap);
+		compositeListFrom(listOfProducts);
  		this.add(list,gridBagContraints.LINE_START);
 	}
 		

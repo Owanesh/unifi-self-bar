@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.DefaultListModel;
@@ -53,15 +54,24 @@ public class SupplementListView extends LJPanel {
 	public void initializePanel(){
 		this.add(panelTitle, GraphicGuide.RED_TONE, 40, gridBagContraints.FIRST_LINE_START);
 		this.add(yourChoiceLabel, Color.WHITE, 10, gridBagContraints.LAST_LINE_START);
-  		addProductFromMap(supplementLabel,ViewSets.getCoffeeSupplement(),supplementList);
+		GUIController gc = GUIController.getInstance();
+		Order o = gc.getMiddleware().getPreparedOrder();
+		ArrayList<String> hashmapOfProducts;
+		if(o instanceof Coffee){
+			hashmapOfProducts= ViewSets.getCoffeeDecoration();
+		}else{
+			hashmapOfProducts = ViewSets.getCocktailDecoration();
+
+		}
+  		addProductFromMap(supplementLabel,hashmapOfProducts,supplementList);
    		this.add(btnCheckout, gridBagContraints.LAST_LINE_END);
 		addButtonDestinatino(btnCheckout,"precheckout");
  	}
 
-	private void compositeListFrom(HashMap hash, JList jlist){
-		jlist.setListData(hash.keySet().toArray());
+	private void compositeListFrom(ArrayList<String> hash, JList jlist){
+		jlist.setListData(hash.toArray());
 		jlist.add(new JSeparator(SwingConstants.VERTICAL));
-		jlist.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		jlist.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		jlist.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		jlist.setVisibleRowCount(-1);	
 		addListner(jlist);
@@ -82,13 +92,13 @@ public class SupplementListView extends LJPanel {
         });	    
 	}
 	
-	private void addProductFromMap(JLabel title, HashMap hashmap,JList list){
+	private void addProductFromMap(JLabel title, ArrayList<String> hashmap,JList list){
 		this.add(title, GraphicGuide.RED_TONE, GraphicGuide.LABEL_FONTSIZE, gridBagContraints.LINE_START);
 		compositeListFrom(hashmap,list);
  		this.add(list,gridBagContraints.LINE_START);
 	}	
 	
-	private void addProductFromMap(HashMap hashmap,JList list){
+	private void addProductFromMap(ArrayList<String> hashmap,JList list){
 		compositeListFrom(hashmap,list);
  		this.add(list,gridBagContraints.LINE_START);
 	}
