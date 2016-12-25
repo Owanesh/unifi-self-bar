@@ -13,8 +13,8 @@ import java.awt.*;
 public class GUIController extends JFrame implements ComponentInterface{
 
 	/* Fields */
-	JPanel oldPnl;
-	JPanel currentPnl;
+	LJPanel oldPnl;
+	LJPanel currentPnl;
 	private ViewSets viewManager = new ViewSets();
  	private static GUIController instance = null;
 	private Middleware middleware;
@@ -42,23 +42,21 @@ public class GUIController extends JFrame implements ComponentInterface{
 		this.setVisible(true);
 	} 
 	
-	public void setCurrentPanel(JPanel newPanel) {
- System.out.println("dentro la setCurrent con "+newPanel.toString());
+	public void setCurrentPanel(LJPanel newPanel) {
+		newPanel.reset();
 		if(oldPnl!=null){
 			this.remove(oldPnl);
-			System.out.println("=== removed old panel "+oldPnl.toString());
-	}
-		else{
-			this.currentPnl = newPanel;
 		}
-		this.oldPnl = this.currentPnl;
-		this.currentPnl = newPanel;
+		currentPnl = newPanel;
+		oldPnl = currentPnl;
+		currentPnl = newPanel;
   		this.add(currentPnl,BorderLayout.CENTER);
+  		currentPnl.refresh();
 		this.refresh();
 	}
 	
 	public void resetLastPanel() {
- 		JPanel temp = currentPnl;
+ 		LJPanel temp = currentPnl;
 		currentPnl = oldPnl;
 		oldPnl = temp;
 		this.refresh();
