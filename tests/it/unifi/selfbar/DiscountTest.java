@@ -27,7 +27,7 @@ public class DiscountTest {
 		bill.addOrder(new Milk(new Milk(new Arabic())));
 		try {
 			Bill b = bill.getDiscount();
-			double expected = ARABIC_VALUE + MILK_VALUE * 2;
+			double expected = 1.8;
 			assertEquals(expected, b.getTotal(), 0.001);
 		} catch (Exception e) {
 		}
@@ -37,7 +37,7 @@ public class DiscountTest {
 	public void getTotalTest() {
 		bill = new NightDiscount(new AbsoluteDiscount(new SelfBarBill(), amount), percentage);
 		bill.addOrder(new Milk(new Milk(new Arabic())));
-		double expected = ARABIC_VALUE + MILK_VALUE * 2;
+		double expected = 1.8;
 		expected -= amount;
 		expected -= expected * percentage;
 		assertEquals(expected, bill.getTotal(), 0.001);
@@ -47,7 +47,7 @@ public class DiscountTest {
 	public void negativeTotalTest() {
 		bill = new NightDiscount(new SelfBarBill(), percentage);
 		bill.addOrder(new Milk(new Milk(new Arabic())));
-		double expected = ARABIC_VALUE + MILK_VALUE * 2;
+		double expected = 1.8;
 		expected -= expected * percentage;
 		assertTrue(bill.getTotal() >= 0);
 	}

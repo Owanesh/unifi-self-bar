@@ -15,33 +15,33 @@ import it.unifi.selfbar.order.decorator.Soda;
 
 public class BillTest {
 	Bill bill;
-	
+
 	@Rule
 	public final ExpectedException iAExcept = ExpectedException.none();
-	
+
 	@Before
 	public void init() {
 		bill = new SelfBarBill();
 	}
 
 	@Test
-	public void getNoneOrderTotal(){
-		assertTrue(bill.getTotal()==0);
+	public void getNoneOrderTotal() {
+		assertTrue(bill.getTotal() == 0);
 	}
-	
+
 	@Test
-	public void getNullOrder() throws IllegalArgumentException{
+	public void getNullOrder() throws IllegalArgumentException {
 		iAExcept.expect(IllegalArgumentException.class);
 		bill.addOrder(null);
- 	}
-		
+	}
+
 	@Test
 	public void getTotalTest() {
 		bill.addOrder(new Milk(new Milk(new Arabic())));
 		bill.addOrder(new Martini());
 		bill.addOrder(new Soda(new Martini()));
-		double expected = ARABIC_VALUE + MILK_VALUE * 2 + MARTINI_VALUE + SODA_VALUE + MARTINI_VALUE;
-		assertEquals(expected, bill.getTotal(), 0.001);
+
+		assertEquals(8.5, bill.getTotal(), 0.001);
 	}
 
 	@Test

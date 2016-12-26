@@ -22,18 +22,17 @@ public class BillVisitorTest {
 		b.addOrder(new Martini());
 		b.addOrder(new Soda(new Martini()));
 		b.addOrder(new Soda(new Martini()));
+		b.addOrder(new Tequila());
 		b.addOrder(new Brasilian());
 
 	}
 
 	@Test
-	public void visitPrintTest() {
-		b.accept(new BillPrintVisitor());
-	}
-
-	@Test
 	public void visitLeastPopularOrderTest() {
-		b.accept(new BillLeastPopularOrderVisitor());
+		BillLeastPopularOrderVisitor v = new BillLeastPopularOrderVisitor();
+		b.accept(v);
+		Order o = v.getOrderResult();
+		assertTrue(o instanceof Brasilian);
 	}
 
 }
