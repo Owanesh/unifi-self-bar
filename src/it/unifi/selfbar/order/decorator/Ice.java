@@ -21,7 +21,7 @@ public class Ice extends AbstractDecorator implements Order {
 	
 	@Override
 	public double getSimplePrice(){
-		return Constants.ICE_VALUE;
+		return 0.05;
 	}
 
 }

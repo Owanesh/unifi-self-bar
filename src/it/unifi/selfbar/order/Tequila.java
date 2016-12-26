@@ -1,16 +1,17 @@
 package it.unifi.selfbar.order;
 
 import it.unifi.selfbar.constant.Constants;
+import it.unifi.selfbar.exception.ErrorMessages;
 import it.unifi.selfbar.exception.OrderNotDecorableException;
 
 /**
  * @author Busiello & Mauro
  */
-public class Arabic implements Coffee {
+public class Tequila implements Cocktail {
 
 	@Override
-	public String toString() {
-		return this.getClass().getSimpleName() + " : " + getSimplePrice();
+	public Order getOrder() throws OrderNotDecorableException {
+		throw new OrderNotDecorableException(ErrorMessages.THIS_ORDER_IS_NOT_DECORATOR);
 	}
 
 	@Override
@@ -20,12 +21,12 @@ public class Arabic implements Coffee {
 
 	@Override
 	public double getSimplePrice() {
-		return 1.50;
+		return 4.20;
 	}
 
 	@Override
-	public Order getOrder() throws OrderNotDecorableException {
-		throw new OrderNotDecorableException("Order non decorable exception");
+	public String toString() {
+		return this.getClass().getSimpleName() + " : " + getSimplePrice();
 	}
 
 	/**
@@ -42,7 +43,7 @@ public class Arabic implements Coffee {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		return this == obj || obj instanceof Arabic;
+		return this == obj || obj instanceof Tequila;
 	}
 
 }

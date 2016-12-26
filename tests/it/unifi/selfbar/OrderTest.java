@@ -18,7 +18,7 @@ public class OrderTest {
 	@Test
 	public void getPriceTest() {
 		Order soda = new Soda(new Martini());
-		double expected = Constants.MARTINI_VALUE + Constants.SODA_VALUE;
+		double expected = 3.5;
 		assertEquals(expected, soda.getPrice(), 0.001);
 	}
 

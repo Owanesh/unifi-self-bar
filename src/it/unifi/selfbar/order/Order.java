@@ -5,8 +5,10 @@ import it.unifi.selfbar.exception.OrderNotDecorableException;
 /**
  * @author Busiello & Mauro
  */
-public interface  Order {
+public interface Order {
 	public double getPrice();
+
 	public double getSimplePrice();
+
 	public Order getOrder() throws OrderNotDecorableException;
 }

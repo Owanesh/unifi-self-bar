@@ -8,19 +8,22 @@ import it.unifi.selfbar.order.Cocktail;
  */
 public class Appetizer extends CocktailDecorator {
 
-	public Appetizer(Cocktail cocktail) throws IllegalArgumentException {
-		super(cocktail);
- 	}
-	
-	@Override
-	public double getPrice(){
-		return super.getPrice()+getSimplePrice();
-	}
-	
-	@Override
-	public double getSimplePrice(){
-		return Constants.APPETIZER_VALUE;
-	}
+ 
+		public Appetizer(Cocktail cocktail) throws IllegalArgumentException {
+			super(cocktail);
+	 	}
+		
+		@Override
+		public double getPrice(){
+			return super.getPrice()+getSimplePrice();
+		}
+		
+		@Override
+		public double getSimplePrice(){
+			return 0.05;
+		}
 
+
+ 
 
 }
