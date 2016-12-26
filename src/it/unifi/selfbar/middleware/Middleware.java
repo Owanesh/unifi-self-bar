@@ -8,7 +8,7 @@ import it.unifi.selfbar.payment.PaymentStrategy;
 
 public class Middleware {
 
- 	private Table table;
+ 	private static Table table;
 	private Order order=null;
  	
 	public Middleware(){
@@ -37,7 +37,7 @@ public class Middleware {
 		return true;
 	}
 	
-	public double getTotal(){
+	public static double getTotal(){
 		return table.getBill().getTotal();
 	}
 
