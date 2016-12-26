@@ -41,8 +41,5 @@ public class Middleware {
 		return table.getBill().getTotal();
 	}
 
-	public void test(){
-		System.out.print(table.getBill().getListOrders().toString());
-	}
-	
+
 }

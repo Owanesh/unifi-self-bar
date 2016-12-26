@@ -42,7 +42,8 @@ public class SupplementListView extends LJPanel {
 	public void initializePanel(){
 		this.add(panelTitle, GraphicGuide.RED_TONE, 40, gridBagContraints.FIRST_LINE_START);
 		this.add(yourChoiceLabel, Color.WHITE, 10, gridBagContraints.LAST_LINE_START);
-		Order o = GUIController.getMiddleware().getPreparedOrder();
+		GUIController mainGui = GUIController.getInstance();
+		Order o = mainGui.getMiddleware().getPreparedOrder();
 		ArrayList<String> listOfSupplements;
 		if(o instanceof Coffee){
 			listOfSupplements = AppSettings.getCoffeeDecoration();

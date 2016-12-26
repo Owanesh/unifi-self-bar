@@ -33,6 +33,9 @@ public abstract class LJPanel extends JPanel implements ComponentInterface {
         gridBagContraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagContraints.anchor = i;	
         gridBagContraints.gridwidth = 2; 
+        gridBagContraints.weightx=1;
+        gridBagContraints.weighty=1;
+
         this.add(obj,gridBagContraints);
 		return obj;
 	}

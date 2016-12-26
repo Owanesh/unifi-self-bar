@@ -76,6 +76,8 @@ public class AppSettings {
 		paymentMethod = new ArrayList<String>();
 		paymentMethod.add("Money");
 		paymentMethod.add("Credit card");
+		paymentMethod.add("Bit Coin");
+		paymentMethod.add("Pay Pal");
 		return paymentMethod;
 	}
 	
