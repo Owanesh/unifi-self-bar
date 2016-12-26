@@ -18,11 +18,11 @@ public class BillPrintVisitor implements Visitor {
 
 	private void createString(Bill bill, List<Order> list) {
 		for (Order order : list) {
-			billSummary.append(order.toString());
-			billSummary.append("Total: " + String.format("%.2f", order.getPrice()));
-			billSummary.append("--------------------------------------");
+			billSummary.append("\n"+order.toString());
+			billSummary.append("\n\t\tTotal: " + String.format("%.2f", order.getPrice()));
+			billSummary.append("\n--------------------------------------");
 		}
-		billSummary.append("TOTAL PRICE: " + String.format("%.2f", bill.getTotal()));
+		billSummary.append("\n\t\tTOTAL PRICE: " + String.format("%.2f", bill.getTotal()));
 	}
 
 	public String getBillSummary() {

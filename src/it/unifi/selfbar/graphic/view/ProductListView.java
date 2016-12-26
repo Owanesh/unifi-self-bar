@@ -111,16 +111,6 @@ public class ProductListView extends LJPanel {
 		list.clearSelection();
  		initializePanel();
 	}
-	@Override
-
-	protected void addButtonDestination(JButton btn, String destination) {
-		btn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-			nextView=destination;
-				goTo();
-			}
-		});
-	}
+ 
 
 }

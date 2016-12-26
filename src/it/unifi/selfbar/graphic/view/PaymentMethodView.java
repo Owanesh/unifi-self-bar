@@ -66,22 +66,22 @@ public class PaymentMethodView extends LJPanel {
 		GUIController mainGui = GUIController.getInstance();
 		String name = mainGui.sanitizeString(list.getSelectedValue().toString());
 		String message = "";
-		switch (name) {
+ 		switch (name) {
 			case "creditcard":
 				CreditCardPaymentStrategy creditCard = new CreditCardPaymentStrategy();
 				mainGui.getMiddleware().pay(creditCard);
+				alertAboutPaymentMethod("Credit Card");
 				break;
-			case "cash":
+			case "money":
 				CashPaymentStrategy cash = new CashPaymentStrategy();
 				mainGui.getMiddleware().pay(cash);
+				alertAboutPaymentMethod("Money");
 				break;
 			case "paypal":
-				mainGui.getMiddleware().pay((double price) -> JOptionPane.showMessageDialog(this, "Payed using PayPal", "Payment Result",
-						JOptionPane.INFORMATION_MESSAGE));
+				mainGui.getMiddleware().pay(( price) -> alertAboutPaymentMethod("Pay Pal"));
 				break;
 			case "bitcoin":
-				mainGui.getMiddleware().pay((double price) -> JOptionPane.showMessageDialog(this, "Payed using Bitcoin", "Payment Result",
-						JOptionPane.INFORMATION_MESSAGE));
+				mainGui.getMiddleware().pay(( price) -> alertAboutPaymentMethod("Bit Coin"));
 				break;
 		}
 
@@ -93,6 +93,11 @@ public class PaymentMethodView extends LJPanel {
 		JOptionPane.showMessageDialog(this, message, "Payment Result", JOptionPane.INFORMATION_MESSAGE);
 		mainGui.switchTo(this.nextView);
 	}
+	
+	private void alertAboutPaymentMethod(String payMethod){
+		JOptionPane.showMessageDialog(this, "Payed using "+payMethod, "Payment Result",
+				JOptionPane.PLAIN_MESSAGE);
+	}
 
 	@Override
 	public void reset() {
@@ -101,6 +106,5 @@ public class PaymentMethodView extends LJPanel {
 		initializePanel();
 	}
 
-	
 
 }

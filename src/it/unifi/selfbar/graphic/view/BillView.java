@@ -9,25 +9,27 @@ import javax.swing.JTextArea;
 import it.unifi.selfbar.constant.GraphicGuide;
 import it.unifi.selfbar.graphic.GUIController;
 import it.unifi.selfbar.graphic.LJPanel;
+import it.unifi.selfbar.visitor.BillPrintVisitor;
 
 public class BillView extends LJPanel {
  	private JButton btnCheckout = new JButton("Checkout");
-	
+ 	private JTextArea billSummaryTextArea;
+    private JScrollPane billSummaryScrollBar;
+	private BillPrintVisitor bpv = new BillPrintVisitor();
+
+
 	public BillView() {
 		initializePanel();
 		addButtonDestination(btnCheckout,GraphicGuide.SELECT_PAYMENT_METHOD);
 	}
 
 	protected void initializePanel(){
-		JTextArea commentTextArea = 
-		         new JTextArea("This is a Swing tutorial "
-		         +"to make GUI application in Java.",5,20);
-
-		      JScrollPane scrollPane = new JScrollPane(commentTextArea);    
-
-				this.add(scrollPane,gridBagContraints.CENTER);
-				this.add(btnCheckout,gridBagContraints.CENTER);
-			this.refresh();
+		GUIController.getMiddleware().getTable().getBill().accept(bpv);
+ 		billSummaryTextArea = new JTextArea(bpv.getBillSummary(),5,20);
+		billSummaryScrollBar = new JScrollPane(billSummaryTextArea);
+		this.add(billSummaryScrollBar,gridBagContraints.CENTER);
+		this.add(btnCheckout,gridBagContraints.LAST_LINE_END);
+		this.refresh();
 	}
 	
 

@@ -25,8 +25,7 @@ public abstract class Table {
 
 	public void requestPayment(PaymentStrategy strategy) {
 		strategy.pay(bill.getTotal());
-		// il conto è pagato, ripristino il tavolo per il prossimo cliente
-		reset();
+	
 	}
 
 	public void addOrder(Order order) {

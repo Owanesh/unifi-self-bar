@@ -25,8 +25,7 @@ public class Tequila implements Cocktail {
 
 	@Override
 	public double getSimplePrice() {
- 		return Constants.TEQUILA_VALUE;
-		return 4.20;
+ 		return 4.20;
 	}
 
 	@Override

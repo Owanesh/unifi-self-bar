@@ -11,6 +11,10 @@ public class Middleware {
  	private static Table table;
 	private Order order=null;
  	
+	public Table getTable(){
+		return table;
+	}
+	
 	public Middleware(){
 		table = new SelfBarTable();
 	}
