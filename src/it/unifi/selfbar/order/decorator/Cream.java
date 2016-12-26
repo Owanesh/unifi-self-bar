@@ -20,7 +20,7 @@ public class Cream extends CoffeeDecorator {
 	
 	@Override
 	public double getSimplePrice(){
-		return Constants.CREAM_VALUE;
+		return 0.20;
 	}
 
 

@@ -19,6 +19,6 @@ public class Milk extends CoffeeDecorator {
 	
 	@Override
 	public double getSimplePrice(){
-		return Constants.MILK_VALUE;
+		return 0.15;
 	}
 }

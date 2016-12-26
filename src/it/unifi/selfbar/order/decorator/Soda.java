@@ -19,6 +19,6 @@ public class Soda extends CocktailDecorator {
 	
 	@Override
 	public double getSimplePrice(){
-		return Constants.SODA_VALUE;
+		return 0.30;
 	}
 }

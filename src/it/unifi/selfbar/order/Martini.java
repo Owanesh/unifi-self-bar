@@ -9,10 +9,9 @@ import it.unifi.selfbar.exception.OrderNotDecorableException;
 public class Martini implements Cocktail {
 
 	@Override
-	public String toString(){
-		return this.getClass().getSimpleName()+" : "+getSimplePrice();
+	public String toString() {
+		return this.getClass().getSimpleName() + " : " + getSimplePrice();
 	}
-	
 
 	@Override
 	public double getPrice() {
@@ -21,12 +20,29 @@ public class Martini implements Cocktail {
 
 	@Override
 	public double getSimplePrice() {
-		return Constants.MARTINI_VALUE;
+		return 3.20;
 	}
 
 	@Override
 	public Order getOrder() throws OrderNotDecorableException {
 		throw new OrderNotDecorableException("Order non decorable exception");
+	}
+
+	/**
+	 * necessario per il corretto funzionamento di BillLeastPopularOrderVisitor
+	 */
+	@Override
+	public int hashCode() {
+		int result = getClass().getName().hashCode();
+		return result;
+	}
+
+	/**
+	 * necessario per il corretto funzionamento di BillLeastPopularOrderVisitor
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		return this == obj || obj instanceof Martini;
 	}
 
 }

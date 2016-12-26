@@ -8,19 +8,27 @@ import it.unifi.selfbar.bill.Bill;
 import it.unifi.selfbar.exception.OrderNotDecorableException;
 import it.unifi.selfbar.order.Order;
 
+/**
+ * 
+ * @author Busiello & Mauro
+ * 
+ *         In caso di pareggio, torna solamente uno dei prodotti meno ordinati
+ *
+ */
 public class BillLeastPopularOrderVisitor implements Visitor {
 
 	private Order orderResult;
+
 	public void visitBill(Bill bill) {
 		List<Order> list = bill.getListOrders();
 		HashMap<Order, Integer> hashmap = createTableOfOccurence(list);
 		orderResult = getLeastRequestedOrder(hashmap);
 	}
 
-	public Order getOrderResult(){
+	public Order getOrderResult() {
 		return orderResult;
 	}
-	
+
 	private HashMap<Order, Integer> createTableOfOccurence(List<Order> list) {
 		HashMap<Order, Integer> hashmap = new HashMap<>();
 		for (Order order : list) {
