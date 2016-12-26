@@ -6,7 +6,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -14,7 +17,7 @@ import it.unifi.selfbar.constant.GraphicGuide;
 
 public abstract class LJPanel extends JPanel implements ComponentInterface {
 	protected GridBagConstraints gridBagContraints;
-	
+	protected String nextView;
 	public LJPanel() {
 		super(new GridBagLayout());
 		setBackground(GraphicGuide.BACKGROUND_TONE);
@@ -56,4 +59,13 @@ public abstract class LJPanel extends JPanel implements ComponentInterface {
 	}
 	protected abstract void initializePanel();
 	protected abstract void goTo();
+	protected void addButtonDestination(JButton btn, String destination) {
+		btn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				nextView=destination;
+				goTo();
+			}
+		});
+	}
 }

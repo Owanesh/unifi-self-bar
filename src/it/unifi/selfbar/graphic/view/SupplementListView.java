@@ -30,8 +30,7 @@ public class SupplementListView extends LJPanel {
  	private JLabel yourChoiceLabel = new JLabel(GraphicGuide.YOUR_CHOICE);
  	private JButton btnCheckout=new JButton("Go to checkout");
  	private JList supplementList = new JList();  
-	private String nextView;
-  	
+   	
  
 	public SupplementListView() {
 		initializePanel();
@@ -123,16 +122,6 @@ public class SupplementListView extends LJPanel {
 
 
 
-	private void addButtonDestination(JButton btn,String destination){
-		btn.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-		  {
-			nextView=destination;
-		    goTo();
-		  }
-		});
-	}
+	 
 
 }

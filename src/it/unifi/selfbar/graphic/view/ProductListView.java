@@ -31,8 +31,7 @@ public class ProductListView extends LJPanel {
 	private JLabel productsLabel = new JLabel(GraphicGuide.OUR_PRODUCTS_LABEL);
  	private JLabel yourChoiceLabel = new JLabel(GraphicGuide.YOUR_CHOICE);
 	private JList list = new JList();  
-	private String nextView;
-	private JButton btnNext = new JButton(GraphicGuide.GO_ON);
+ 	private JButton btnNext = new JButton(GraphicGuide.GO_ON);
 	private JButton btnSelectSupplement = new JButton(GraphicGuide.SELECT_SUPPLEMENT_VIEW);
 	
 	public ProductListView() {
@@ -112,16 +111,15 @@ public class ProductListView extends LJPanel {
 		list.clearSelection();
  		initializePanel();
 	}
-	
-	private void addButtonDestination(JButton btn,String destination){
-		btn.addActionListener(new ActionListener()
-		{
+	@Override
+
+	protected void addButtonDestination(JButton btn, String destination) {
+		btn.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e)
-		  {
+			public void actionPerformed(ActionEvent e) {
 			nextView=destination;
-		    goTo();
-		  }
+				goTo();
+			}
 		});
 	}
 

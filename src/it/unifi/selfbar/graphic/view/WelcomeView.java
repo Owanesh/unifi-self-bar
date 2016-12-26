@@ -17,7 +17,6 @@ public class WelcomeView extends LJPanel{
 	
 	public WelcomeView() {
 		initializePanel();
- 		goTo();
  		
 	}
 
@@ -42,6 +41,8 @@ public class WelcomeView extends LJPanel{
 	protected void initializePanel() {
 		this.add(welcomeMessage, GraphicGuide.RED_TONE, 40, gridBagContraints.CENTER);
  		this.refresh();		
+ 		goTo();
+
 	}
 	
  

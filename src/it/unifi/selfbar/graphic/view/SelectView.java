@@ -14,12 +14,11 @@ public class SelectView extends LJPanel {
  	private JButton btnCheckout=new JButton("Go to checkout");
  	private JButton btnAnotherOrder=new JButton("Select Another Product");
  	
- 	private String nextView;
- 	
+  	
 	public SelectView() {
 		initializePanel();
-		addButtonListener(btnCheckout,"checkout");
-		addButtonListener(btnAnotherOrder,"selectproduct");
+		addButtonDestination(btnCheckout,"checkout");
+		addButtonDestination(btnAnotherOrder,"selectproduct");
 	}
 
  
@@ -31,17 +30,7 @@ public class SelectView extends LJPanel {
 		mainGui.switchTo(this.nextView);	
 	}
 	
-	private void addButtonListener(JButton btn,String destination){
-		btn.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-		  {
-			nextView=destination;
-		    goTo();
-		  }
-		});
-	}
+	 
 
 
 

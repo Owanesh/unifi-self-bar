@@ -11,11 +11,11 @@ import it.unifi.selfbar.graphic.GUIController;
 import it.unifi.selfbar.graphic.LJPanel;
 
 public class BillView extends LJPanel {
-	private String nextView = "checkout";
-	private JButton btnCheckout = new JButton("Checkout");
+ 	private JButton btnCheckout = new JButton("Checkout");
 	
 	public BillView() {
 		initializePanel();
+		addButtonDestination(btnCheckout,GraphicGuide.SELECT_PAYMENT_METHOD);
 	}
 
 	protected void initializePanel(){
@@ -27,7 +27,6 @@ public class BillView extends LJPanel {
 
 				this.add(scrollPane,gridBagContraints.CENTER);
 				this.add(btnCheckout,gridBagContraints.CENTER);
-				addButtonDestination(btnCheckout,GraphicGuide.SELECT_PAYMENT_METHOD);
 			this.refresh();
 	}
 	
@@ -40,15 +39,5 @@ public class BillView extends LJPanel {
 
 	}
 	
-	private void addButtonDestination(JButton btn,String destination){
-		btn.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-		  {
-			nextView=destination;
-		    goTo();
-		  }
-		});
-	}
+	 
 }

@@ -32,12 +32,12 @@ import it.unifi.selfbar.payment.CreditCardPaymentStrategy;
 public class PaymentMethodView extends LJPanel {
 	private JLabel panelTitle = new JLabel(GraphicGuide.SELECT_PAYMENT_METHOD);
 	private JList list = new JList();
-	private String nextView = GraphicGuide.GOODBYE_VIEW;
-	private JButton btnNext = new JButton("Pay");
+ 	private JButton btnNext = new JButton("Pay");
 
 	public PaymentMethodView() {
+		nextView = GraphicGuide.GOODBYE_VIEW;
 		initializePanel();
-		addButtonDestination(btnNext, "precheckout");
+		addButtonDestination(btnNext, "goodbye");
 
 	}
 
@@ -101,13 +101,6 @@ public class PaymentMethodView extends LJPanel {
 		initializePanel();
 	}
 
-	private void addButtonDestination(JButton btn, String destination) {
-		btn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				goTo();
-			}
-		});
-	}
+	
 
 }

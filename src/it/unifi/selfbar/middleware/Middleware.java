@@ -40,6 +40,9 @@ public class Middleware {
 	public static double getTotal(){
 		return table.getBill().getTotal();
 	}
+	public void resetMiddleware(){
+		table.reset();
+	}
 
 
 }
