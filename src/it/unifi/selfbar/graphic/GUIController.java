@@ -101,7 +101,8 @@ public class GUIController extends JFrame implements ComponentInterface{
 	private void configureBasicLayout() {
 		getContentPane().setBackground(GraphicGuide.BACKGROUND_TONE);
 		this.setTitle(Constants.APPLICATION_NAME);
-		this.setLocationRelativeTo(this);
+		this.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - GraphicGuide.WINDOW_WIDTH) / 2,
+				(Toolkit.getDefaultToolkit().getScreenSize().height - GraphicGuide.WINDOW_HEIGHT) / 2);
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
