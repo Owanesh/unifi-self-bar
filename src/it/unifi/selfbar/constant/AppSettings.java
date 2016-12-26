@@ -54,7 +54,7 @@ public class AppSettings {
 
 	public static  ArrayList<String> getGenericDecoration() {
 		if (genericDecoration == null) {
-			genericDecoration = initializeProducts();
+			genericDecoration = initializeGenericDecoration();
 		}
 		return genericDecoration;
 	}

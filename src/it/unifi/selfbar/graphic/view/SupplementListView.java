@@ -7,8 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
- import javax.swing.JButton;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
  import javax.swing.JSeparator;
@@ -50,6 +51,7 @@ public class SupplementListView extends LJPanel {
 		}else{
 			listOfSupplements = new ArrayList<String>();	
 		}
+		listOfSupplements.addAll(AppSettings.getGenericDecoration());
   		addProductFromMap(supplementLabel,listOfSupplements,supplementList);
    		this.add(btnCheckout, gridBagContraints.LAST_LINE_END);
  	}
@@ -93,8 +95,11 @@ public class SupplementListView extends LJPanel {
 	@Override
 	protected void goTo() {
 		GUIController mainGui = GUIController.getInstance();
-		String name= mainGui.sanitizeString(supplementList.getSelectedValue().toString());
-		Order dynamicOrder = mainGui.getMiddleware().getPreparedOrder();
+		List<String> selectedValueList= (supplementList.getSelectedValuesList());
+		Order dynamicOrder;
+		for(String name : selectedValueList){
+			dynamicOrder = mainGui.getMiddleware().getPreparedOrder();
+			name = mainGui.sanitizeString(name);
      	switch(name){
     		case "ice":
     			Ice ice = new Ice(dynamicOrder);
@@ -117,6 +122,7 @@ public class SupplementListView extends LJPanel {
 				mainGui.getMiddleware().prepareOrder(appetizer);
 				break;
 			}
+		}
      	mainGui.switchTo(this.nextView);		
 	}
 
