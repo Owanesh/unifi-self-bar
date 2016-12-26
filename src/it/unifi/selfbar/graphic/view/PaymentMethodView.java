@@ -37,12 +37,13 @@ public class PaymentMethodView extends LJPanel {
 
 	public PaymentMethodView() {
 		initializePanel();
+		addButtonDestination(btnNext, "precheckout");
+
 	}
 
 	public void initializePanel() {
 		addProductFromMap(panelTitle, AppSettings.getPaymentMethod());
 		this.add(btnNext, gridBagContraints.LAST_LINE_END);
-		addButtonDestinatino(btnNext, "precheckout");
 		refresh();
 	}
 
@@ -100,7 +101,7 @@ public class PaymentMethodView extends LJPanel {
 		initializePanel();
 	}
 
-	private void addButtonDestinatino(JButton btn, String destination) {
+	private void addButtonDestination(JButton btn, String destination) {
 		btn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

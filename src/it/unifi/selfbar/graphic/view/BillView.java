@@ -3,6 +3,10 @@ package it.unifi.selfbar.graphic.view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+import it.unifi.selfbar.constant.GraphicGuide;
 import it.unifi.selfbar.graphic.GUIController;
 import it.unifi.selfbar.graphic.LJPanel;
 
@@ -15,8 +19,15 @@ public class BillView extends LJPanel {
 	}
 
 	protected void initializePanel(){
-			this.add(btnCheckout,gridBagContraints.CENTER);
-			addButtonDestinatino(btnCheckout,"checkout");
+		JTextArea commentTextArea = 
+		         new JTextArea("This is a Swing tutorial "
+		         +"to make GUI application in Java.",5,20);
+
+		      JScrollPane scrollPane = new JScrollPane(commentTextArea);    
+
+				this.add(scrollPane,gridBagContraints.CENTER);
+				this.add(btnCheckout,gridBagContraints.CENTER);
+				addButtonDestination(btnCheckout,GraphicGuide.SELECT_PAYMENT_METHOD);
 			this.refresh();
 	}
 	
@@ -29,7 +40,7 @@ public class BillView extends LJPanel {
 
 	}
 	
-	private void addButtonDestinatino(JButton btn,String destination){
+	private void addButtonDestination(JButton btn,String destination){
 		btn.addActionListener(new ActionListener()
 		{
 			@Override

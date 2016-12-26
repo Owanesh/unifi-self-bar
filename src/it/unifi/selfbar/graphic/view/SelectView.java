@@ -18,7 +18,7 @@ public class SelectView extends LJPanel {
  	
 	public SelectView() {
 		initializePanel();
-		addButtonListener(btnCheckout,GraphicGuide.SELECT_PAYMENT_METHOD);
+		addButtonListener(btnCheckout,"checkout");
 		addButtonListener(btnAnotherOrder,"selectproduct");
 	}
 
