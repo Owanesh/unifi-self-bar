@@ -32,7 +32,7 @@ public class SupplementListView extends LJPanel {
 	private JLabel yourChoiceLabel = new JLabel(GraphicGuide.YOUR_CHOICE);
 	private JButton btnCheckout = new JButton("Go to checkout");
 	private JList supplementList = new JList();
-	private ArrayList<String> listOfSupplements;
+	private ArrayList<String> listOfSupplements = new ArrayList<String>();
 	public SupplementListView() {
 		initializePanel();
 		addButtonDestination(btnCheckout, "precheckout");
