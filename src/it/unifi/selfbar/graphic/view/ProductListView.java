@@ -38,8 +38,8 @@ public class ProductListView extends LJPanel {
 	private JButton btnSelectSupplement = new JButton(GraphicGuide.SELECT_SUPPLEMENT_VIEW);
 
 	public ProductListView() {
-		initializePanel();
 		addListner(list);
+		initializePanel();
 		addButtonDestination(btnSelectSupplement, "selectsupplement");
 		addButtonDestination(btnNext, "precheckout");
 	}

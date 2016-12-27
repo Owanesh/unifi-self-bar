@@ -2,8 +2,10 @@ package it.unifi.selfbar.graphic.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -39,27 +41,54 @@ public class PaymentMethodView extends LJPanel {
 		nextView = GraphicGuide.GOODBYE_VIEW;
 		initializePanel();
 		addButtonDestination(btnNext, "goodbye");
-
 	}
 
 	public void initializePanel() {
-		addProductFromMap(panelTitle, AppSettings.getPaymentMethod());
-		this.add(btnNext, GridBagConstraints.LAST_LINE_END);
+		addProductFromMap(AppSettings.getPaymentMethod());
+		initGui();
 		refresh();
 	}
 
-	private void compositeListFrom(ArrayList<String> hash) {
-		list.setListData(hash.toArray());
-		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		list.setVisibleRowCount(-1); // select only one element
-		list.ensureIndexIsVisible(-1); // deselect all element
+	private void initGui() {
+		foregroundAndFont();
+		// generic constraints
+		GridBagLayout layout = new GridBagLayout();
+		GridBagConstraints gb = new GridBagConstraints();
+		setLayout(layout);
+		gb.weightx = 1;
+		gb.weighty = 1;
+		// panel title
+		gb.anchor = GridBagConstraints.NORTHWEST;
+		gb.gridx = 0;
+		gb.gridy = 0;
+		layout.setConstraints(panelTitle, gb);
+		add(panelTitle);
+		// JList
+		gb.anchor = GridBagConstraints.CENTER;
+		gb.gridx = 1;
+		gb.gridy = 1;
+		layout.setConstraints(list, gb);
+		add(list);
+		// btn
+		gb.gridx = 2;
+		gb.gridy = 2;
+		layout.setConstraints(btnNext, gb);
+		add(btnNext);
 	}
 
-	private void addProductFromMap(JLabel title, ArrayList<String> listOfProducts) {
-		this.add(title, GraphicGuide.RED_TONE, GraphicGuide.LABEL_FONTSIZE, GridBagConstraints.LINE_START);
-		compositeListFrom(listOfProducts);
-		this.add(list, GridBagConstraints.LINE_START);
+	private void foregroundAndFont() {
+		panelTitle.setForeground(GraphicGuide.RED_TONE);
+		panelTitle.setFont(new Font("Courier", Font.PLAIN, 40));
+	}
+
+	/**
+	 * inizializza la JList
+	 * 
+	 * @param listOfProducts
+	 */
+	private void addProductFromMap(ArrayList<String> listOfProducts) {
+		list.setListData(listOfProducts.toArray());
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	}
 
 	@Override
