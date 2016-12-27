@@ -25,17 +25,19 @@ public abstract class Table {
 
 	public void requestPayment(PaymentStrategy strategy) {
 		strategy.pay(bill.getTotal());
-	
+
 	}
 
 	public void addOrder(Order order) {
 		bill.addOrder(order);
 	}
 
-
-
 	public Bill getBill() {
 		return bill;
+	}
+
+	public void setBill(Bill bill) {
+		this.bill = bill;
 	}
 
 	public void reset() {

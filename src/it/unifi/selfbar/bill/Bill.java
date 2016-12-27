@@ -3,6 +3,7 @@ package it.unifi.selfbar.bill;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.unifi.selfbar.exception.BillNotDecorableException;
 import it.unifi.selfbar.order.Order;
 import it.unifi.selfbar.visitor.Visitor;
 
@@ -42,7 +43,7 @@ public abstract class Bill {
 		}
 	}
 
-	public abstract Bill getDiscount() throws Exception;
+	public abstract Bill getDiscount() throws BillNotDecorableException;
 
 	public void accept(Visitor v) {
 		v.visitBill(this);
