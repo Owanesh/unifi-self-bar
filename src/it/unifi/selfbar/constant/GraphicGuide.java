@@ -13,8 +13,8 @@ public static final String WELCOME_MESSAGE="Welcome to SelfBar";
 public static final String GOODBYE_MESSAGE="Goodbye :)";
 
 /* WindowConfig */
-public static final int WINDOW_WIDTH = 800;
-public static final int WINDOW_HEIGHT = 600;
+public static final int WINDOW_WIDTH = 1000;
+public static final int WINDOW_HEIGHT = 800;
 
 /* View Title */
 public static final String WELCOME_VIEW="Welcome";

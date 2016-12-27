@@ -1,6 +1,7 @@
 package it.unifi.selfbar.graphic.view;
 
 import java.awt.Color;
+import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -39,7 +40,7 @@ public class WelcomeView extends LJPanel{
 
 	@Override
 	protected void initializePanel() {
-		this.add(welcomeMessage, GraphicGuide.RED_TONE, 40, gridBagContraints.CENTER);
+		this.add(welcomeMessage, GraphicGuide.RED_TONE, 40, GridBagConstraints.CENTER);
  		this.refresh();		
  		goTo();
 

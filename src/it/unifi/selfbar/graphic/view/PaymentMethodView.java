@@ -3,6 +3,7 @@ package it.unifi.selfbar.graphic.view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ import it.unifi.selfbar.payment.CreditCardPaymentStrategy;
 public class PaymentMethodView extends LJPanel {
 	private JLabel panelTitle = new JLabel(GraphicGuide.SELECT_PAYMENT_METHOD);
 	private JList list = new JList();
- 	private JButton btnNext = new JButton("Pay");
+	private JButton btnNext = new JButton("Pay");
 
 	public PaymentMethodView() {
 		nextView = GraphicGuide.GOODBYE_VIEW;
@@ -43,7 +44,7 @@ public class PaymentMethodView extends LJPanel {
 
 	public void initializePanel() {
 		addProductFromMap(panelTitle, AppSettings.getPaymentMethod());
-		this.add(btnNext, gridBagContraints.LAST_LINE_END);
+		this.add(btnNext, GridBagConstraints.LAST_LINE_END);
 		refresh();
 	}
 
@@ -56,9 +57,9 @@ public class PaymentMethodView extends LJPanel {
 	}
 
 	private void addProductFromMap(JLabel title, ArrayList<String> listOfProducts) {
-		this.add(title, GraphicGuide.RED_TONE, GraphicGuide.LABEL_FONTSIZE, gridBagContraints.LINE_START);
+		this.add(title, GraphicGuide.RED_TONE, GraphicGuide.LABEL_FONTSIZE, GridBagConstraints.LINE_START);
 		compositeListFrom(listOfProducts);
-		this.add(list, gridBagContraints.LINE_START);
+		this.add(list, GridBagConstraints.LINE_START);
 	}
 
 	@Override
@@ -66,23 +67,23 @@ public class PaymentMethodView extends LJPanel {
 		GUIController mainGui = GUIController.getInstance();
 		String name = mainGui.sanitizeString(list.getSelectedValue().toString());
 		String message = "";
- 		switch (name) {
-			case "creditcard":
-				CreditCardPaymentStrategy creditCard = new CreditCardPaymentStrategy();
-				mainGui.getMiddleware().pay(creditCard);
-				alertAboutPaymentMethod("Credit Card");
-				break;
-			case "money":
-				CashPaymentStrategy cash = new CashPaymentStrategy();
-				mainGui.getMiddleware().pay(cash);
-				alertAboutPaymentMethod("Money");
-				break;
-			case "paypal":
-				mainGui.getMiddleware().pay(( price) -> alertAboutPaymentMethod("Pay Pal"));
-				break;
-			case "bitcoin":
-				mainGui.getMiddleware().pay(( price) -> alertAboutPaymentMethod("Bit Coin"));
-				break;
+		switch (name) {
+		case "creditcard":
+			CreditCardPaymentStrategy creditCard = new CreditCardPaymentStrategy();
+			mainGui.getMiddleware().pay(creditCard);
+			alertAboutPaymentMethod("Credit Card");
+			break;
+		case "money":
+			CashPaymentStrategy cash = new CashPaymentStrategy();
+			mainGui.getMiddleware().pay(cash);
+			alertAboutPaymentMethod("Money");
+			break;
+		case "paypal":
+			mainGui.getMiddleware().pay((price) -> alertAboutPaymentMethod("Pay Pal"));
+			break;
+		case "bitcoin":
+			mainGui.getMiddleware().pay((price) -> alertAboutPaymentMethod("Bit Coin"));
+			break;
 		}
 
 		if (mainGui.getMiddleware().getPayResult()) {
@@ -93,10 +94,9 @@ public class PaymentMethodView extends LJPanel {
 		JOptionPane.showMessageDialog(this, message, "Payment Result", JOptionPane.INFORMATION_MESSAGE);
 		mainGui.switchTo(this.nextView);
 	}
-	
-	private void alertAboutPaymentMethod(String payMethod){
-		JOptionPane.showMessageDialog(this, "Payed using "+payMethod, "Payment Result",
-				JOptionPane.PLAIN_MESSAGE);
+
+	private void alertAboutPaymentMethod(String payMethod) {
+		JOptionPane.showMessageDialog(this, "Payed using " + payMethod, "Payment Result", JOptionPane.PLAIN_MESSAGE);
 	}
 
 	@Override
@@ -105,6 +105,5 @@ public class PaymentMethodView extends LJPanel {
 		list.clearSelection();
 		initializePanel();
 	}
-
 
 }

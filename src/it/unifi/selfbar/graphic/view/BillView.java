@@ -1,5 +1,5 @@
 package it.unifi.selfbar.graphic.view;
-
+import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -27,8 +27,8 @@ public class BillView extends LJPanel {
 		GUIController.getMiddleware().getTable().getBill().accept(bpv);
  		billSummaryTextArea = new JTextArea(bpv.getBillSummary(),5,20);
 		billSummaryScrollBar = new JScrollPane(billSummaryTextArea);
-		this.add(billSummaryScrollBar,gridBagContraints.CENTER);
-		this.add(btnCheckout,gridBagContraints.LAST_LINE_END);
+		this.add(billSummaryScrollBar,GridBagConstraints.CENTER);
+		this.add(btnCheckout,GridBagConstraints.LAST_LINE_END);
 		this.refresh();
 	}
 	

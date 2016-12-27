@@ -11,34 +11,26 @@ import it.unifi.selfbar.graphic.GUIController;
 import it.unifi.selfbar.graphic.LJPanel;
 
 public class SelectView extends LJPanel {
- 	private JButton btnCheckout=new JButton("Go to checkout");
- 	private JButton btnAnotherOrder=new JButton("Select Another Product");
- 	
-  	
+	private JButton btnCheckout = new JButton("Go to checkout");
+	private JButton btnAnotherOrder = new JButton("Select Another Product");
+
 	public SelectView() {
 		initializePanel();
-		addButtonDestination(btnCheckout,"checkout");
-		addButtonDestination(btnAnotherOrder,"selectproduct");
+		addButtonDestination(btnCheckout, "checkout");
+		addButtonDestination(btnAnotherOrder, "selectproduct");
 	}
-
- 
 
 	@Override
 	protected void goTo() {
 		GUIController mainGui = GUIController.getInstance();
 		mainGui.getMiddleware().confirmOrder();
-		mainGui.switchTo(this.nextView);	
+		mainGui.switchTo(this.nextView);
 	}
-	
-	 
-
-
 
 	@Override
 	protected void initializePanel() {
-		gridBagContraints.fill=GridBagConstraints.HORIZONTAL;
-		this.add(btnCheckout,gridBagContraints.CENTER);
-		this.add(btnAnotherOrder,gridBagContraints.CENTER);
-		refresh();		
+		this.add(btnCheckout, GridBagConstraints.CENTER);
+		this.add(btnAnotherOrder, GridBagConstraints.CENTER);
+		refresh();
 	}
 }
