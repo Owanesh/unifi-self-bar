@@ -65,7 +65,13 @@ public class PaymentMethodView extends LJPanel {
 	@Override
 	protected void goTo() {
 		GUIController mainGui = GUIController.getInstance();
-		String name = mainGui.sanitizeString(list.getSelectedValue().toString());
+		String name = null;
+		try {
+			name = mainGui.sanitizeString(list.getSelectedValue().toString());
+		} catch (NullPointerException ex) {
+			JOptionPane.showMessageDialog(this, "Please select one payment method.", "Warning", JOptionPane.INFORMATION_MESSAGE);
+			return;
+		}
 		String message = "";
 		switch (name) {
 		case "creditcard":

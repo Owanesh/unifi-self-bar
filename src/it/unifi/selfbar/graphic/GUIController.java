@@ -93,7 +93,6 @@ public class GUIController extends JFrame implements ComponentInterface {
 	 * This method, set default LookAndFeel (from system)
 	 */
 	private void configureBasicLayout() {
-		getContentPane().setBackground(GraphicGuide.BACKGROUND_TONE);
 		this.setTitle(Constants.APPLICATION_NAME);
 		this.setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - GraphicGuide.WINDOW_WIDTH) / 2,
 				(Toolkit.getDefaultToolkit().getScreenSize().height - GraphicGuide.WINDOW_HEIGHT) / 2);
