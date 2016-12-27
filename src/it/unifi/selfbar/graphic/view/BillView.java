@@ -21,14 +21,12 @@ import it.unifi.selfbar.visitor.BillPrintVisitor;
 
 public class BillView extends LJPanel {
 	private JButton btnCheckout = new JButton("Checkout");
-	private JTextArea billSummaryTextArea;
+	private JTextArea billSummaryTextArea = new JTextArea(10, 40);;
 	private JScrollPane billSummaryScrollBar;
 	private BillPrintVisitor bpv = new BillPrintVisitor();
-	private Bill bill = GUIController.getMiddleware().getTable().getBill();
+	private Bill bill;
 
 	public BillView() {
-		checkDiscount();
-		GUIController.getMiddleware().getTable().setBill(bill);
 		initializePanel();
 		addButtonDestination(btnCheckout, GraphicGuide.SELECT_PAYMENT_METHOD);
 	}
@@ -43,14 +41,17 @@ public class BillView extends LJPanel {
 		if (hour >= 0 && hour <= 6) {
 			bill = new NightDiscount(bill, 0.05);// 5%
 		}
-
 	}
 
 	@Override
 	protected void initializePanel() {
-
+		bill = GUIController.getMiddleware().getTable().getBill();
+		if(bill!=null && bill.getTotal()>0)
+			checkDiscount();
+		GUIController.getMiddleware().getTable().setBill(bill);
 		bill.accept(bpv);
-		billSummaryTextArea = new JTextArea(bpv.getBillSummary(), 5, 20);
+		billSummaryTextArea.setText("");
+		billSummaryTextArea.setText(bpv.getBillSummary());
 		billSummaryScrollBar = new JScrollPane(billSummaryTextArea);
 		this.add(billSummaryScrollBar, GridBagConstraints.CENTER);
 		this.add(btnCheckout, GridBagConstraints.LAST_LINE_END);
@@ -61,7 +62,6 @@ public class BillView extends LJPanel {
 	protected void goTo() {
 		GUIController mainGui = GUIController.getInstance();
 		mainGui.switchTo(this.nextView);
-
 	}
 
 }

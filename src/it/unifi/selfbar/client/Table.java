@@ -41,6 +41,7 @@ public abstract class Table {
 	}
 
 	public void reset() {
+		bill = null;
 		bill = createBill();
 	}
 
