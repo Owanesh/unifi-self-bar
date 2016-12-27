@@ -1,12 +1,17 @@
 package it.unifi.selfbar.graphic.view;
 
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -21,7 +26,7 @@ import it.unifi.selfbar.visitor.BillPrintVisitor;
 
 public class BillView extends LJPanel {
 	private JButton btnCheckout = new JButton("Checkout");
-	private JTextArea billSummaryTextArea = new JTextArea(10, 40);;
+	private JTextArea billSummaryTextArea = new JTextArea();
 	private JScrollPane billSummaryScrollBar;
 	private BillPrintVisitor bpv = new BillPrintVisitor();
 	private Bill bill;
@@ -29,6 +34,56 @@ public class BillView extends LJPanel {
 	public BillView() {
 		initializePanel();
 		addButtonDestination(btnCheckout, GraphicGuide.SELECT_PAYMENT_METHOD);
+	}
+
+	@Override
+	protected void initializePanel() {
+		initGui();
+		bill = GUIController.getMiddleware().getTable().getBill();
+		if (bill.getTotal() > 0) {
+			checkDiscount();
+			GUIController.getMiddleware().getTable().setBill(bill);
+		}
+		bill.accept(bpv);
+		billSummaryTextArea.setText("");
+		billSummaryTextArea.setText(bpv.getBillSummary());
+
+		this.refresh();
+	}
+
+	private void initGui() {
+		// generic constraints
+		GridBagLayout layout = new GridBagLayout();
+		GridBagConstraints gb = new GridBagConstraints();
+		setLayout(layout);
+		gb.weightx = 1;
+		gb.weighty = 1;
+		// txtArea
+		billSummaryTextArea.setEditable(false);
+		billSummaryScrollBar = new JScrollPane(billSummaryTextArea);
+		gb.fill = GridBagConstraints.BOTH;
+		gb.insets = new Insets(20, 20, 20, 0);
+		gb.gridx = 0;
+		gb.gridy = 0;
+		layout.setConstraints(billSummaryScrollBar, gb);
+		add(billSummaryScrollBar);
+		// btnCheckout
+		try {
+			Image img = Toolkit.getDefaultToolkit().createImage("img/pay_icon.png");
+
+			btnCheckout.setIcon(new ImageIcon(img));
+			btnCheckout.setText("Go to checkout");
+			Image img1 = Toolkit.getDefaultToolkit().createImage("img/back_icon.png");
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		gb.insets = new Insets(0, 0, 0, 0);
+		gb.fill = GridBagConstraints.NONE;
+		gb.gridx = 1;
+		gb.gridy = 0;
+		layout.setConstraints(btnCheckout, gb);
+		add(btnCheckout);
 	}
 
 	private void checkDiscount() {
@@ -41,21 +96,6 @@ public class BillView extends LJPanel {
 		if (hour >= 0 && hour <= 6) {
 			bill = new NightDiscount(bill, 0.05);// 5%
 		}
-	}
-
-	@Override
-	protected void initializePanel() {
-		bill = GUIController.getMiddleware().getTable().getBill();
-		if(bill!=null && bill.getTotal()>0)
-			checkDiscount();
-		GUIController.getMiddleware().getTable().setBill(bill);
-		bill.accept(bpv);
-		billSummaryTextArea.setText("");
-		billSummaryTextArea.setText(bpv.getBillSummary());
-		billSummaryScrollBar = new JScrollPane(billSummaryTextArea);
-		this.add(billSummaryScrollBar, GridBagConstraints.CENTER);
-		this.add(btnCheckout, GridBagConstraints.LAST_LINE_END);
-		this.refresh();
 	}
 
 	@Override

@@ -96,7 +96,7 @@ public class PaymentMethodView extends LJPanel {
 	}
 
 	private void alertAboutPaymentMethod(String payMethod, double price) {
-		String message = "You have just spent : " + price + "\n";
+		String message = "You have just spent : " + String.format("%.2f", price) + "\n";
 		JOptionPane.showMessageDialog(this, message + "Payed using " + payMethod, "Payment Result",
 				JOptionPane.PLAIN_MESSAGE);
 	}
