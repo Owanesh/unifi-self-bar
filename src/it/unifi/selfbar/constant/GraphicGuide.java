@@ -32,6 +32,7 @@ public static final String SUBTOTAL_LABEL="Subtotal";
 public static final String DISCOUNT_LABEL="Discount";
 public static final String OUR_PRODUCTS_LABEL="Our Products";
 public static final String YOUR_CHOICE="Your choice";
+public static final String AUTHORS = "By BUSIELLO & MAURO";
 
 
 
