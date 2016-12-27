@@ -5,7 +5,7 @@ import java.awt.Color;
 public class GraphicGuide {
 
  /* ColorSet */
-public static final Color BACKGROUND_TONE = Color.darkGray;
+public static final Color BACKGROUND_TONE = new Color(41, 41,41);
 public static final Color RED_TONE = new Color(178, 80,80) ;
 
 /* Messages */

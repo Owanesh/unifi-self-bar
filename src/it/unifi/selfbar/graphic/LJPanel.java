@@ -36,7 +36,7 @@ public abstract class LJPanel extends JPanel implements ComponentInterface {
 	}
 
 	private void setBackgroundImage() {
-		String path = "img/selfbar_background.png";
+		String path = "img/selfbar_background.jpg";
 		img = Toolkit.getDefaultToolkit().createImage(path);
 		loadImage(img);
 	}
