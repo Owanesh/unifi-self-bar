@@ -2,8 +2,10 @@ package it.unifi.selfbar.graphic.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -43,41 +45,75 @@ public class ProductListView extends LJPanel {
 	}
 
 	public void initializePanel() {
-		this.add(panelTitle, GraphicGuide.RED_TONE, 40, GridBagConstraints.FIRST_LINE_START);
-		this.add(yourChoiceLabel, Color.WHITE, 10, GridBagConstraints.LAST_LINE_START);
-		addProductFromMap(productsLabel, AppSettings.getProduct());
-		this.add(btnSelectSupplement, GridBagConstraints.LAST_LINE_END);
-		this.add(btnNext, GridBagConstraints.LAST_LINE_END);
-
+		addProductFromMap(AppSettings.getProduct());
+		initGui();
 		refresh();
 	}
 
-	private void compositeListFrom(ArrayList<String> hash) {
-		list.setListData(hash.toArray());
+	private void initGui() {
+		foregroundAndFont();
+		// generic constraints
+		GridBagLayout layout = new GridBagLayout();
+		GridBagConstraints gb = new GridBagConstraints();
+		setLayout(layout);
+		gb.weightx = 1;
+		gb.weighty = 1;
+		// panel title
+		gb.anchor = GridBagConstraints.NORTH;
+		gb.gridx = 0;
+		gb.gridy = 0;
+		layout.setConstraints(panelTitle, gb);
+		add(panelTitle);
+
+		// productsLabel
+		gb.anchor = GridBagConstraints.CENTER;
+		gb.gridx = 1;
+		gb.gridy = 1;
+		layout.setConstraints(productsLabel, gb);
+		add(productsLabel);
+
+		// JList
+		gb.gridx = 2;
+		gb.gridy = 1;
+		layout.setConstraints(list, gb);
+		add(list);
+		// yourChoiceLabel
+		gb.anchor = GridBagConstraints.SOUTH;
+		gb.gridx = 0;
+		gb.gridy = 2;
+		gb.gridwidth = 2;
+		layout.setConstraints(yourChoiceLabel, gb);
+		add(yourChoiceLabel);
+		// btnSelectSupplements
+		gb.gridwidth = 1;
+		gb.gridx = 2;
+		gb.gridy = 2;
+		layout.setConstraints(btnSelectSupplement, gb);
+		add(btnSelectSupplement);
+		// btnNext
+		gb.gridx = 3;
+		gb.gridy = 2;
+		layout.setConstraints(btnNext, gb);
+		add(btnNext);
+	}
+
+	private void foregroundAndFont() {
+		panelTitle.setForeground(GraphicGuide.RED_TONE);
+		panelTitle.setFont(new Font("Courier", Font.PLAIN, 40));
+		yourChoiceLabel.setForeground(GraphicGuide.RED_TONE);
+		yourChoiceLabel.setFont(new Font("Courier", Font.PLAIN, 20));
+		productsLabel.setForeground(GraphicGuide.RED_TONE);
+		productsLabel.setFont(new Font("Courier", Font.PLAIN, 40));
+	}
+
+	/**
+	 * inizializza la JList
+	 * 
+	 * @param listOfProducts
+	 */
+	private void addProductFromMap(ArrayList<String> listOfProducts) {
+		list.setListData(listOfProducts.toArray());
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-
-	}
-
-	private void addListner(JList list) {
-		list.addListSelectionListener(new ListSelectionListener() {
-			@Override
-			public void valueChanged(ListSelectionEvent arg0) {
-				if (list.getSelectedValue() != null) {
-					if (!arg0.getValueIsAdjusting()) {
-						yourChoiceLabel.setText(GraphicGuide.YOUR_CHOICE + " " + list.getSelectedValue().toString());
-					}
-				} else {
-					list.clearSelection();
-				}
-			}
-		});
-	}
-
-	private void addProductFromMap(JLabel title, ArrayList<String> listOfProducts) {
-		this.add(title, GraphicGuide.RED_TONE, GraphicGuide.LABEL_FONTSIZE, GridBagConstraints.LINE_START);
-		compositeListFrom(listOfProducts);
-		this.add(list, GridBagConstraints.LINE_START);
 	}
 
 	@Override
@@ -103,6 +139,21 @@ public class ProductListView extends LJPanel {
 			break;
 		}
 		mainGui.switchTo(this.nextView);
+	}
+
+	private void addListner(JList list) {
+		list.addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				if (list.getSelectedValue() != null) {
+					if (!arg0.getValueIsAdjusting()) {
+						yourChoiceLabel.setText(GraphicGuide.YOUR_CHOICE + " " + list.getSelectedValue().toString());
+					}
+				} else {
+					list.clearSelection();
+				}
+			}
+		});
 	}
 
 	@Override
