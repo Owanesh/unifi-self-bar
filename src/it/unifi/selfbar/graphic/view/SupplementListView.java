@@ -2,6 +2,7 @@ package it.unifi.selfbar.graphic.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
@@ -42,7 +43,7 @@ public class SupplementListView extends LJPanel {
 	public void initializePanel() {
 		listOfSupplements.clear();
 		this.add(panelTitle, GraphicGuide.RED_TONE, 40, GridBagConstraints.FIRST_LINE_START);
-		this.add(yourChoiceLabel, Color.WHITE, 10, GridBagConstraints.LAST_LINE_START);
+		this.add(yourChoiceLabel, GraphicGuide.RED_TONE, 20, GridBagConstraints.LAST_LINE_START);
 		Order o = GUIController.getMiddleware().getPreparedOrder();
 		if (o instanceof Coffee) {
 			listOfSupplements.addAll(AppSettings.getCoffeeDecoration());
@@ -87,6 +88,8 @@ public class SupplementListView extends LJPanel {
 		compositeListFrom(hashmap, list);
 		this.add(list, GridBagConstraints.LINE_START);
 	}
+	
+	
 
 	@Override
 	protected void goTo() {

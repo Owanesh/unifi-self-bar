@@ -23,7 +23,7 @@ public class SelectView extends LJPanel {
 
 	public SelectView() {
 		initializePanel();
-		
+
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class SelectView extends LJPanel {
 		layout.setConstraints(btnCheckout, gb);
 		add(btnCheckout);
 		// btnAnotherOrder
-		gb.gridx = 0;
-		gb.gridy = 1;
+		gb.gridx = 1;
+		gb.gridy = 0;
 		layout.setConstraints(btnAnotherOrder, gb);
 		add(btnAnotherOrder);
 	}
@@ -64,6 +64,7 @@ public class SelectView extends LJPanel {
 	private void createButton() {
 		btnCheckout = new JButton();
 		btnAnotherOrder = new JButton();
+
 		btnCheckout.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnCheckout.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnAnotherOrder.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -77,6 +78,7 @@ public class SelectView extends LJPanel {
 			Image img1 = Toolkit.getDefaultToolkit().createImage("img/back_icon.png");
 			btnAnotherOrder.setIcon(new ImageIcon(img1));
 			btnAnotherOrder.setText("Select Another Product");
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
