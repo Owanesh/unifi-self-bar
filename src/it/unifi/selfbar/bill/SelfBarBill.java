@@ -1,5 +1,7 @@
 package it.unifi.selfbar.bill;
 
+import it.unifi.selfbar.exception.BillNotDecorableException;
+
 /**
  * @author Busiello & Mauro
  */
@@ -10,8 +12,8 @@ public class SelfBarBill extends Bill {
 	}
 
 	@Override
-	public Bill getDiscount() throws Exception {
-		throw new Exception("This bill does not have sub-discount.");
+	public Bill getDiscount() throws BillNotDecorableException {
+		throw new BillNotDecorableException("This bill does not have sub-discount.");
 	}
 
 }

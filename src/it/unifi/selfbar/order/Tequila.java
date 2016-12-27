@@ -9,6 +9,10 @@ import it.unifi.selfbar.exception.OrderNotDecorableException;
  */
 public class Tequila implements Cocktail {
 
+ 	public Tequila() {
+ 	}
+
+
 	@Override
 	public Order getOrder() throws OrderNotDecorableException {
 		throw new OrderNotDecorableException(ErrorMessages.THIS_ORDER_IS_NOT_DECORATOR);
@@ -21,7 +25,7 @@ public class Tequila implements Cocktail {
 
 	@Override
 	public double getSimplePrice() {
-		return 4.20;
+ 		return 4.20;
 	}
 
 	@Override

@@ -16,7 +16,8 @@ public class AbsoluteDiscount extends DiscountDecorator {
 
 	@Override
 	public double getTotal() {
-		return getDiscount().getTotal() - amount;
+		double total = getDiscount().getTotal();
+		return total > amount ? total - amount : total;
 	}
 
 }

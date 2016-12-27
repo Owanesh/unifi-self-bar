@@ -18,12 +18,14 @@ public class Brasilian implements Coffee {
 
 	@Override
 	public double getSimplePrice() {
+
 		return 1.00;
 	}
 
-	public Order getOrder() throws OrderNotDecorableException {
+ 	public Order getOrder() throws OrderNotDecorableException {
 		throw new OrderNotDecorableException(ErrorMessages.THIS_ORDER_IS_NOT_DECORATOR);
 	}
+
 
 	/**
 	 * necessario per il corretto funzionamento di BillLeastPopularOrderVisitor
@@ -41,4 +43,4 @@ public class Brasilian implements Coffee {
 	public boolean equals(Object obj) {
 		return this == obj || obj instanceof Brasilian;
 	}
-}
+ }

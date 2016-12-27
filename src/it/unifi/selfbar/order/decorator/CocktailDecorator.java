@@ -1,5 +1,6 @@
 package it.unifi.selfbar.order.decorator;
 
+import it.unifi.selfbar.exception.ErrorMessages;
 import it.unifi.selfbar.order.*;
 
 /**
