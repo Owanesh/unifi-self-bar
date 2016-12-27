@@ -58,10 +58,7 @@ public class SupplementListView extends LJPanel {
 
 	private void compositeListFrom(ArrayList<String> hash, JList jlist) {
 		jlist.setListData(hash.toArray());
-		jlist.add(new JSeparator(SwingConstants.VERTICAL));
 		jlist.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		jlist.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		jlist.setVisibleRowCount(-1);
 		addListner(jlist);
 	}
 
