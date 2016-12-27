@@ -23,8 +23,7 @@ public class SelectView extends LJPanel {
 
 	public SelectView() {
 		initializePanel();
-		addButtonDestination(btnCheckout, "checkout");
-		addButtonDestination(btnAnotherOrder, "selectproduct");
+		
 	}
 
 	@Override
@@ -37,6 +36,8 @@ public class SelectView extends LJPanel {
 	@Override
 	protected void initializePanel() {
 		initGui();
+		addButtonDestination(btnCheckout, "checkout");
+		addButtonDestination(btnAnotherOrder, "selectproduct");
 		refresh();
 	}
 
