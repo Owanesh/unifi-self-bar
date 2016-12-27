@@ -32,7 +32,7 @@ public class SupplementListView extends LJPanel {
 	private JLabel yourChoiceLabel = new JLabel(GraphicGuide.YOUR_CHOICE);
 	private JButton btnCheckout = new JButton("Go to checkout");
 	private JList supplementList = new JList();
-
+	private ArrayList<String> listOfSupplements;
 	public SupplementListView() {
 		initializePanel();
 		addButtonDestination(btnCheckout, "precheckout");
@@ -40,14 +40,14 @@ public class SupplementListView extends LJPanel {
 	}
 
 	public void initializePanel() {
+		listOfSupplements.clear();
 		this.add(panelTitle, GraphicGuide.RED_TONE, 40, GridBagConstraints.FIRST_LINE_START);
 		this.add(yourChoiceLabel, Color.WHITE, 10, GridBagConstraints.LAST_LINE_START);
 		Order o = GUIController.getMiddleware().getPreparedOrder();
-		ArrayList<String> listOfSupplements;
 		if (o instanceof Coffee) {
-			listOfSupplements = AppSettings.getCoffeeDecoration();
+			listOfSupplements.addAll(AppSettings.getCoffeeDecoration());
 		} else if (o instanceof Cocktail) {
-			listOfSupplements = AppSettings.getCocktailDecoration();
+			listOfSupplements.addAll(AppSettings.getCocktailDecoration());
 		} else {
 			listOfSupplements = new ArrayList<String>();
 		}
