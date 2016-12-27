@@ -69,7 +69,8 @@ public class PaymentMethodView extends LJPanel {
 		try {
 			name = mainGui.sanitizeString(list.getSelectedValue().toString());
 		} catch (NullPointerException ex) {
-			JOptionPane.showMessageDialog(this, "Please select one payment method.", "Warning", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Please select one payment method.", "Warning",
+					JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 		String message = "";
@@ -77,32 +78,27 @@ public class PaymentMethodView extends LJPanel {
 		case "creditcard":
 			CreditCardPaymentStrategy creditCard = new CreditCardPaymentStrategy();
 			mainGui.getMiddleware().pay(creditCard);
-			alertAboutPaymentMethod("Credit Card");
+			alertAboutPaymentMethod("Credit Card", mainGui.getMiddleware().getTotal());
 			break;
 		case "money":
 			CashPaymentStrategy cash = new CashPaymentStrategy();
 			mainGui.getMiddleware().pay(cash);
-			alertAboutPaymentMethod("Money");
+			alertAboutPaymentMethod("Money", mainGui.getMiddleware().getTotal());
 			break;
 		case "paypal":
-			mainGui.getMiddleware().pay((price) -> alertAboutPaymentMethod("Pay Pal"));
+			mainGui.getMiddleware().pay((price) -> alertAboutPaymentMethod("Pay Pal", price));
 			break;
 		case "bitcoin":
-			mainGui.getMiddleware().pay((price) -> alertAboutPaymentMethod("Bit Coin"));
+			mainGui.getMiddleware().pay((price) -> alertAboutPaymentMethod("Bit Coin", price));
 			break;
 		}
-
-		if (mainGui.getMiddleware().getPayResult()) {
-			message = "You have just spent : " + mainGui.getMiddleware().getTotal();
-		} else {
-			message = "System error, try later. You have to pay : " + mainGui.getMiddleware().getTotal();
-		}
-		JOptionPane.showMessageDialog(this, message, "Payment Result", JOptionPane.INFORMATION_MESSAGE);
 		mainGui.switchTo(this.nextView);
 	}
 
-	private void alertAboutPaymentMethod(String payMethod) {
-		JOptionPane.showMessageDialog(this, "Payed using " + payMethod, "Payment Result", JOptionPane.PLAIN_MESSAGE);
+	private void alertAboutPaymentMethod(String payMethod, double price) {
+		String message = "You have just spent : " + price + "\n";
+		JOptionPane.showMessageDialog(this, message + "Payed using " + payMethod, "Payment Result",
+				JOptionPane.PLAIN_MESSAGE);
 	}
 
 	@Override
