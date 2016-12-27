@@ -25,7 +25,7 @@ import it.unifi.selfbar.graphic.LJPanel;
 import it.unifi.selfbar.visitor.BillPrintVisitor;
 
 public class BillView extends LJPanel {
-	private JButton btnCheckout = new JButton("Checkout");
+	private JButton btnCheckout = new JButton();
 	private JTextArea billSummaryTextArea = new JTextArea();
 	private JScrollPane billSummaryScrollBar;
 	private BillPrintVisitor bpv = new BillPrintVisitor();
@@ -72,7 +72,6 @@ public class BillView extends LJPanel {
 			Image img = Toolkit.getDefaultToolkit().createImage("img/pay_icon.png");
 
 			btnCheckout.setIcon(new ImageIcon(img));
-			btnCheckout.setText("Go to checkout");
 			Image img1 = Toolkit.getDefaultToolkit().createImage("img/back_icon.png");
 
 		} catch (Exception ex) {

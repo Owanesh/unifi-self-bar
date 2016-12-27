@@ -55,21 +55,23 @@ public class PaymentMethodView extends LJPanel {
 		GridBagLayout layout = new GridBagLayout();
 		GridBagConstraints gb = new GridBagConstraints();
 		setLayout(layout);
-		gb.weightx = 1;
-		gb.weighty = 1;
+		gb.weightx = 0;
+		gb.weighty = 0;
 		// panel title
 		gb.anchor = GridBagConstraints.NORTHWEST;
 		gb.gridx = 0;
 		gb.gridy = 0;
+		gb.gridwidth=2;
 		layout.setConstraints(panelTitle, gb);
 		add(panelTitle);
 		// JList
 		gb.anchor = GridBagConstraints.CENTER;
-		gb.gridx = 1;
+		gb.gridx = 0;
 		gb.gridy = 1;
 		layout.setConstraints(list, gb);
 		add(list);
 		// btn
+		gb.gridwidth=1;
 		gb.gridx = 2;
 		gb.gridy = 2;
 		layout.setConstraints(btnNext, gb);

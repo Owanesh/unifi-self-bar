@@ -1,6 +1,8 @@
 package it.unifi.selfbar.graphic.view;
 
+import java.awt.Font;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -28,10 +30,28 @@ public class GoodbyeView extends LJPanel {
 
 	@Override
 	protected void initializePanel() {
-		this.add(goodbyeMessage, GraphicGuide.RED_TONE, 40, GridBagConstraints.CENTER);
-		this.add(btnResetAll, GridBagConstraints.LAST_LINE_END);
-
+		initGui();
 		this.refresh();
 	}
 
+	private void initGui() {
+		goodbyeMessage.setForeground(GraphicGuide.RED_TONE);
+		goodbyeMessage.setFont(new Font("Courier", Font.PLAIN, 60));
+		// generric constraints
+		GridBagLayout layout = new GridBagLayout();
+		GridBagConstraints gb = new GridBagConstraints();
+		setLayout(layout);
+		gb.weightx = 1;
+		// welcome constraints
+		gb.gridx = 0;
+		gb.gridy = 0;
+		layout.setConstraints(goodbyeMessage, gb);
+		add(goodbyeMessage);	
+		gb.gridx = 0;
+		gb.gridy = 1;
+		layout.setConstraints(btnResetAll, gb);
+		add(btnResetAll);
+		this.refresh();
+
+	}
 }
