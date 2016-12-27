@@ -33,7 +33,7 @@ public class GUIController extends JFrame implements ComponentInterface {
 	}
 
 	/* Constructor */
-	protected GUIController() {
+	private GUIController() {
 		super();
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(new Dimension(GraphicGuide.WINDOW_WIDTH, GraphicGuide.WINDOW_HEIGHT));
