@@ -1,4 +1,4 @@
-![SelfBar Logo]()
+![SelfBar Logo](https://raw.githubusercontent.com/Owanesh/unifi-self-bar/master/img/SelfBar-logo.png)
 # Self Bar #
 
 
