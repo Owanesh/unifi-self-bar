@@ -1,6 +1,6 @@
+
+# Self Bar  [![Build Status](https://travis-ci.org/Owanesh/unifi-self-bar.svg?branch=master)](https://travis-ci.org/Owanesh/unifi-self-bar)
 ![SelfBar Logo](https://raw.githubusercontent.com/Owanesh/unifi-self-bar/master/img/SelfBar-logo.png)
-# Self Bar #
-[![Build Status](https://travis-ci.org/Owanesh/unifi-self-bar.svg?branch=master)](https://travis-ci.org/Owanesh/unifi-self-bar)
 
 
 ### What is this repository for? ###
