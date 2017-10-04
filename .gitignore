@@ -1,4 +1,5 @@
 *.jar
+!lib/
 bin/
 .DS_Store
 .idea/
