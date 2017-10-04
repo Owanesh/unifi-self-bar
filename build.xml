@@ -81,4 +81,5 @@
             <report format="frames" todir="${junit.output.dir}"/>
         </junitreport>
     </target>
+    <target name="test" depends="unifi-self-bar-master"/>
 </project>
